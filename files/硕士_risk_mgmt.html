@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新产品上市风险分析 — SWOT + KRI + Bass 扩散模型</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 40px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8em; color: var(--text); margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); margin-bottom: 36px; }
+  .content { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+  .content p { margin-bottom: 14px; color: var(--text-secondary); font-size: 0.92em; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+  .tag { display: inline-block; background: var(--accent-light); color: var(--accent); padding: 2px 10px; border-radius: 4px; font-size: 0.8em; margin-bottom: 6px; }
+  .desc { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 20px; border-left: 2px solid var(--border); padding-left: 14px; }
+  .summary-cn { background: #f5f3f0; border: 1px solid #1e3a3a; border-radius: 6px; padding: 16px; margin-bottom: 20px; }
+  .summary-cn h4 { color: var(--accent); font-size: 0.85em; margin-bottom: 8px; }
+  .summary-cn p { color: #a0b8c0; font-size: 0.84em; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>新产品上市风险分析 — SWOT + KRI + Bass 扩散模型</h1>
+<p class="subtitle">ALY 6130 · 个人项目</p>
+
+<div class="tag">ALY 6130</div>
+<div class="desc">模拟一个消费电子公司推出新型电视产品（定价$6,500）的完整风险分析。用SWOT框架识别风险维度，为每个维度设计可量化的关键风险指标(KRI)，再用Bass扩散模型预测市场渗透曲线。</div>
+
+<div class="summary-cn">
+<h4>中文摘要</h4>
+<p><strong>使用工具</strong>：Excel / R / Bass 扩散模型</p>
+<p><strong>分析方法</strong>：SWOT 分析、KRI（关键风险指标）设计、Bass 扩散模型预测、情景分析</p>
+<p><strong>分析对象</strong>：一个虚构的中型消费电子公司，计划推出定价 $6,500 的新型"真实体验"电视产品（市场无同类竞品）</p>
+<p><strong>核心问题</strong>：如何为全新品类产品做上市前的系统性风险评估？如何设计可量化的 KRI 监控上市后的实际风险？Bass 模型如何预测新产品的市场渗透曲线？</p>
+<p><strong>结论要点</strong>：为 SWOT 四个象限分别设计了量化 KRI——优势（保修成本占销售比）、劣势（产品测试评分率）、机会（首发季度市场占有率）、威胁（竞品反应时间）。Bass 模型显示在创新系数 p=0.03、模仿系数 q=0.38 的参数下，产品需要约 18 个月达到渗透率峰值。</p>
+</div>
+
+<div class="content">
+<p>Week 6 Final Assignment </p><p>ALY 6130</p><p>Northeastern University</p><p>Minghui Li</p><p>2/27/2021</p><p>Introduction </p><p>In the final project of this course, we were asked to conduct all the skills and knowledge that covered in this course on the case study of medium consumer electronics company. The assumptions are this company has enough capital to take risk of venturing into the new segments. The main consideration is big failures will affect stock price; therefore, hurt shareholder’s interests. Company is planning on building new product, a new type of TV provides “real” watching experience for consumers. Such product does not yet exist in today’s market, the price is set to be $6500. In this project I will perform SWOT analysis, develop corresponding KRIs and use bass model to conduct a through out risk analysis on such new product. </p><p>Analysis </p><p>SWOT Analysis</p><p>Corresponding KRIs </p><p>Strength’ KRI: Warranty Costs as a Percentage Sales </p><p>For this brand-new product to achieve competitive differentiation using new technologies, the quality of the product and related costs should be taking into account. Warranty is a must in TV market and cost related to it will affect the overall profitability of the business. Quality control of group flaws is an essential step to minimize costs of a new product. Without appropriate warranty cost estimation and control, it is hard for new product to achieve competitive advantage in differentiation product market. </p><p>Weakness’ KRI: Product Test Rating Rate </p><p>Since it is hard to predicate consumer’s overall attitude towards to a brand-new product, it is essential for the company to conduct some product testing events. These events should include all the variables and factors potential consumers have, including age, sex, race, background etc. Using valid data and following statistical rules, we could make rational predication and forecast about the potential consumer’s attitude toward to this brand-new product. Product shall be put into market only after receiving desired product test rating rates. </p><p>Opportunity’s KRI: Potential Competitions in the Market </p><p>Since currently there is no competition in this new segment market, it is easy for our firm to achieve dominating position and increase profit level. However, if the product is accepted by the market, there will be competitions and similar product merge into the market, which could lead to decrease of competition and profit level for our firm. </p><p>Threat’s KRI: Damages in Brand Image</p><p>Since our firm is well respected and has good reputation in the industry, a total failure of new product line will cost firm both monetary and image damages. The failure could come from various sources including marketing, technology even from policy risks. It is essential for our firm to measure all the potential damages that associate with launching of new product and have corresponding plans in advance. </p><p>Estimation of one year sale using Bass model</p><p>3D TV</p><p>Since 3D TV is the closets product to the HoloTV, the first step is to use sale data of 3D TV and bass model to generate M, p, q for 3D TV. M equals to the summation of 10 years sale of 3D TV, which is 60640. P equal to first year sale/ total market size, which is 840/60640=0.0013852. Then using Excel Solver to find q value, which equals to 0.741023. </p><p>HoloTV</p><p>For HoloTV, we assume the M is roughly the same as 3D TV since two products are similar and have commons. I assume p will be higher for HoloTV since it is a brand new product and people tend to be attracted towards to that. Using Solver we could find q value. Compare to results we could forecast that HoloTV will have a bigger first year sale(12000) than 3D TV since it is brand new product and customer these day have  higher purchasing power. </p><p>5 KPIs for tracking HoloTV </p><p>Monthly sales</p><p>Customer Satisfaction Score</p><p>Customer Acquisition Cost</p><p>Customer Service Rating rate</p><p>Market share Number </p>
+</div>
+
+</div>
+</body>
+</html>

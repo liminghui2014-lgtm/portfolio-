@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嘟嘟 Agent 2.0 — L1/L2 分层调度情报系统</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 40px 20px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.6em; color: var(--text); margin-bottom: 4px; }
+  h2 { font-size: 1.2em; color: var(--text); border-bottom: 1px solid var(--divider); padding-bottom: 6px; margin: 36px 0 14px; }
+  h3 { font-size: 1.05em; color: var(--text); margin: 20px 0 8px; }
+  h4 { margin: 14px 0 4px; color: var(--text); }
+  p { color: var(--text-secondary); font-size: 0.92em; margin-bottom: 6px; }
+  li { color: var(--text-secondary); font-size: 0.92em; margin-bottom: 3px; }
+  .arch { background: #f5f3f0; border: 1px solid #1e2a3a; border-radius: 8px; padding: 16px; margin: 14px 0; overflow-x: auto; }
+  .arch pre { font-family: "Courier New", monospace; font-size: 0.76em; color: #b0c0d0; white-space: pre; line-height: 1.3; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.88em; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--divider); }
+  th { color: var(--text-tertiary); font-size: 0.85em; font-weight: 600; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+<h1>嘟嘟 Agent 2.0 — L1/L2 分层调度一级市场情报系统</h1>
+<p style="color: var(--text-tertiary);font-size:0.85em;margin-bottom:20px;">Coze 多 Agent 协同架构。L1 总控调度 + L2 工作流采集 + 搜索策略引擎 + APE 独立审计。</p>
+
+<p style="color: var(--text-tertiary);border-left:2px solid #333;padding-left:12px;">Coze 多 Agent 协同架构。L1 总控调度 + L2 工作流采集 + 搜索策略引擎 + APE 独立审计。从信息采集到深度研报全链路自动化。</p>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>一、系统全景架构</h2>
+
+<div class="arch"><pre>
+                              ┌──────────────────────────┐
+                              │     APE 独立审计层         │
+                              │  (Gemini 3.1 Pro 驱动)    │
+                              │  定期评估覆盖率/重复率/     │
+                              │  语义准确率 → 输出改进建议  │
+                              └──────────┬───────────────┘
+                                         │ 审计报告 → 驱动迭代
+                                         ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      嘟嘟 Agent 2.0 核心                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                   L1 状态调度总控                          │   │
+│  │  AGENT2_L1_PROTOCOL.md                                    │   │
+│  │                                                           │   │
+│  │  输入: L2 返回的结构化 JSON                                  │
+│  │  处理: 静默分级引擎 (S/A/B)                                  │
+│  │  输出: 5模块深度研报 (强制格式渲染)                            │
+│  │                                                           │   │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐                │   │
+│  │  │ S级判定   │  │ A级判定   │  │ B级判定   │                │   │
+│  │  │ &gt;$1亿或   │  │ 千万-$1亿 │  │ 常规早期  │                │   │
+│  │  │ 国家队领投│  │ 垂直头部  │  │ 未披露    │                │   │
+│  │  └──────────┘  └──────────┘  └──────────┘                │   │
+│  └──────────────────────┬───────────────────────────────────┘   │
+│                         │ 调用 ↑ ↓ 返回 JSON                     │
+│  ┌──────────────────────┴───────────────────────────────────┐   │
+│  │                   L2 数据采集工作流                         │   │
+│  │  WF_VCinfogather (Coze Workflow)                          │   │
+│  │                                                           │   │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐                │   │
+│  │  │ 36氪搜索  │  │ 通用搜索  │  │ IT桔子   │ ← 三路并行      │   │
+│  │  └────┬─────┘  └────┬─────┘  └────┬─────┘                │   │
+│  │       └──────────────┼──────────────┘                     │   │
+│  │                      ▼                                    │   │
+│  │          ┌──────────────────┐                              │   │
+│  │          │ 段落级智能截断     │ ← 代码层 (确定性)            │   │
+│  │          │ 三源融合 + 指令    │                              │   │
+│  │          └────────┬─────────┘                              │   │
+│  │                   ▼                                        │   │
+│  │          ┌──────────────────┐                              │   │
+│  │          │ DeepSeek-V3.2    │ ← LLM层 (非确定性)            │   │
+│  │          │ JSON 结构化提取   │   被严格封装在夹逼管道中       │   │
+│  │          └────────┬─────────┘                              │   │
+│  │                   ▼                                        │   │
+│  │          ┌──────────────────┐                              │   │
+│  │          │ 哈希去重 + 校验   │ ← 代码层 (确定性)            │   │
+│  │          │ JSON修复 + 置信度 │                              │   │
+│  │          └──────────────────┘                              │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │               VOL1 搜索策略引擎 (底层)                      │   │
+│  │  全天候一级市场策略VOL1.md                                   │   │
+│  │                                                           │   │
+│  │  6维度搜索矩阵 × 配额动态分配 × 3层语义去重 × 置信度计算      │   │
+│  └──────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></div>
+
+<h3>层级关系</h3>
+
+<tr><td>层级</td><td>组件</td><td>职责</td><td>确定性</td></tr>
+<tr><td>**审计层**</td><td>APE (Gemini 3.1 Pro)</td><td>独立评估系统效能，输出改进建议</td><td>非确定性</td></tr>
+<tr><td>**L1**</td><td>嘟嘟主控 (AGENT2_L1_PROTOCOL.md)</td><td>接收 JSON → 分级(S/A/B) → 渲染5模块研报</td><td>确定性</td></tr>
+<tr><td>**L2**</td><td>WF_VCinfogather (Coze Workflow)</td><td>三路搜索 → 字段提取 → 返回结构化 JSON</td><td>确定性夹逼</td></tr>
+<tr><td>**策略引擎**</td><td>VOL1 搜索策略</td><td>6维度搜索词矩阵 + 配额分配 + 去重规则</td><td>确定性</td></tr>
+
+<p>**诚实标注**：协议设计上 L1/L2 是分离的，但当前实际执行时 cron session 仍一体化运行（搜索+分级+渲染一条龙）。架构拆分是下一步工程化目标。</p>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>二、L2 数据采集层 — "夹逼管道"架构</h2>
+
+<p>L2 的核心设计模式：**代码(确定性) → LLM(非确定性) → 代码(确定性)**。非确定性的模型提取被严格封装在两个代码节点之间，幻觉出不了管道。</p>
+
+<h3>2.1 三路并行采集</h3>
+
+<div class="arch"><pre>
+START (Query + Days)
+  │
+  ├──→ 36氪垂直搜索 ────────┐
+  │    search_36kr plugin     │
+  │                           │
+  ├──→ 通用联网搜索 ────────┤  三路并行
+  │    complex_search_raw     │
+  │                           │
+  └──→ IT桔子(需配API) ─────┘
+       HTTP 节点 / 自定义插件
+</pre></div>
+
+<h3>2.2 前置代码节点：段落级智能截断 + 三源融合</h3>
+
+<p>替代原始的 4000 字硬截断（可能把一条融资记录的金额截成两半），改用段落边界感知的智能截断：</p>
+
+<div class="arch"><pre>
+输入: 三个独立信源的原始文本
+  │
+  ├── 对每个信源按段落拆分
+  ├── 逐段累加，超过 5000 字符时停止
+  ├── 标注截断位置 + 已保留字符数
+  │
+  └── 融合输出:
+      ======= 源 A (36氪 VC动态主信源) =======
+      ...(段落级截断)...
+      ======= 源 B (通用网域交叉验证) =======
+      ...(段落级截断)...
+      ======= 源 C (IT桔子 创投数据库) =======
+      ...(段落级截断)...
+      === 融合指令 ===
+      1. 实体对齐：以源 C (IT桔子) 的融资数据为结构基准
+      2. 交叉验证：源 A 与源 B 提供的事件叙事与金额补充
+      3. 置信度判定：三源均提及=High，两源=Medium，单源=Low
+</pre></div>
+
+<h3>2.3 LLM 提取节点：DeepSeek-V3.2 JSON 引擎</h3>
+
+<p>LLM 层被严格约束为"无情感的金融数据提取引擎"：</p>
+
+<div class="arch"><pre>
+System Prompt 核心铁律:
+
+1. 反幻觉与模糊容忍
+   - 具体金额(如"5000万人民币") → 提取确切数字+货币单位
+   - 模糊量级(如"数千万") → 原样保留("数千万人民币")
+   - 仅当原文明确"未披露"/"保密" → 输出 null
+   - 严禁推演！"数千万" ≠ "3000万"
+
+2. 结构化剔除
+   - 提取到的实体不是一家公司 → 直接抛弃
+
+3. 溯源锚定
+   - 每条记录必须带 evidence_quote (30字以内原文证据)
+
+4. 时效筛除
+   - 仅提取 {days} 天以内的融资事件
+   - 无时间标注或超出窗口 → 抛弃
+</pre></div>
+
+<p>输出 Schema：</p>
+<div class="arch"><pre>
+[{
+  "company_name": "星海图",
+  "financing_round": "B+轮",
+  "amount": "数千万人民币",
+  "lead_investor": "红杉中国",
+  "participating_investors": "深创投, 经纬创投",
+  "source_credibility": "High",
+  "evidence_quote": "红杉中国领投，深创投跟投，融资金额数千万"
+}]
+</pre></div>
+
+<h3>2.4 后置代码节点：去重降噪 + JSON 容错</h3>
+
+<div class="arch"><pre>
+输入: LLM 输出的 JSON 字符串
+  │
+  ├── JSON 反序列化
+  │   ├── 成功 → 进入去重
+  │   └── 失败 → regex [\].*?[\] 提取 → 重试解析
+  │
+  ├── 逐条清洗
+  │   ├── 拦截空实体 (company_name = null/"未披露"/"")
+  │   ├── 拦截双空记录 (金额+轮次都为空 → 噪音)
+  │   └── 哈希去重 (seen_companies.add(company))
+  │
+  └── 输出
+      ├── clean_data: 清洗后列表
+      ├── valid_count: 有效数量
+      └── high_confidence_count: High+Medium 置信度计数
+</pre></div>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>三、VOL1 搜索策略引擎</h2>
+
+<p>VOL1 是底层搜索策略文档（871 行），定义了 L2 的搜索行为。不是简单的关键词列表，而是一个完整的搜索资源调度系统。</p>
+
+<h3>3.1 6 维度搜索矩阵</h3>
+
+<div class="arch"><pre>
+维度1: 预设机构 (50家)  配额: 20%
+  ├── 国际头部 (10): a16z, Sequoia US, Benchmark, Lightspeed...
+  ├── 中国头部 (20): 高瓴, 红杉中国, 深创投, IDG, 经纬...
+  ├── 产业资本 (10): 腾讯投资, 阿里资本, 华为哈勃...
+  └── 新兴活跃 (10): 梅花天使, 青山资本, 蓝驰创投...
+
+维度2: 热门赛道 (30个)  配额: 10%
+  ├── AI类 (10): 大模型, AI芯片, 具身智能, 自动驾驶...
+  ├── 硬科技 (10): 固态电池, 半导体, 量子计算, 商业航天...
+  └── 消费 (10): 新消费, 跨境电商, 宠物经济...
+
+维度3: 动态时间  配额: 15%
+  └── 执行时动态生成当日搜索词，禁止硬编码日期
+      例: f"融资 {today}", "一级市场 今日 融资"
+
+维度4: 金额  配额: 30% ← v3.0 核心改进，S级情报主要来源
+  └── "亿元融资", "大额投资 中国 最新", "独角兽 融资"
+
+维度5: 平台  配额: 5%
+  └── site:36kr.com, 投中网, 财联社
+
+维度6: 轮次  配额: 已合并入其他维度
+  └── "天使轮", "A轮融资", "Pre-IPO", "并购"
+</pre></div>
+
+<h3>3.2 6 轮搜索执行顺序</h3>
+
+<div class="arch"><pre>
+Round 1: 金额维度 (30%)
+  → 大额融资发现率 +67%，S级情报命中 5 条
+    ↓
+Round 2: 时间维度 (15%)
+  → 时效性覆盖率 58% → 76%
+    ↓
+Round 3: 动态扩充 (20%) ← 关键机制
+  → 从前两轮结果中提取新公司/新机构/新赛道
+  → 用价值预判阀门过滤（≥60分才触发搜索）
+  → 意外发现优质情报 +100%
+    ↓
+Round 4: 预设机构 (20%)
+  → 头部 VC 最新出手
+    ↓
+Round 5: 预设赛道 (10%)
+  → 热门赛道融资事件
+    ↓
+Round 6: 平台维度 (5%)
+  → 定向抓取高质量信源
+</pre></div>
+
+<h3>3.3 3 层去重引擎</h3>
+
+<div class="arch"><pre>
+Layer 1: 精确匹配 (company + round + date)
+  → 唯一标识完全一致 → 直接判定重复
+    ↓ 未命中
+Layer 2: 相似度匹配 (&gt;0.6 阈值)
+  → 计算两条情报的文本相似度
+  → 候选列表进入 Layer 3
+    ↓ 未命中
+Layer 3: LLM 语义校验 (准确率 95%)
+  → 识别 "星海图" = "Xinghai Intelligence"
+  → 识别 "B+轮" = "新一轮" = "战略融资"
+  → 识别 "$10M" ≈ "约 7200 万人民币"
+  → confidence &gt; 0.85 → 判定重复
+</pre></div>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>四、L1 总控调度 — 5 模块深度研报渲染引擎</h2>
+
+<p>L1 的职责不是"写一篇研报"，而是强制按 5 个模块的结构化格式输出。每个模块有固定的标题、数据要求和格式约束。</p>
+
+<h3>4.1 动态分级引擎 (Silent Grading)</h3>
+
+<p>L1 在后台静默执行分级，用户看不到这个过程：</p>
+
+<tr><td>级别</td><td>触发条件</td><td>典型代表</td></tr>
+<tr><td>**S级**</td><td>金额 > $1亿 / 国家队领投 / 头部VC首次进入新赛道 / 千台级交付 / IPO</td><td>宇树科技 C轮, 月之暗面 B轮</td></tr>
+<tr><td>**A级**</td><td>金额 千万-$1亿 / 垂直赛道头部 / 明星创业者</td><td>某AI制药 A轮, 某消费品牌 B轮</td></tr>
+<tr><td>**B级**</td><td>未披露金额 / 常规早期融资</td><td>天使轮, Pre-A轮</td></tr>
+
+<h3>4.2 5模块强制渲染</h3>
+
+<div class="arch"><pre>
+模块1: 核心数据仪表盘
+  ├── 一句话总结情报时间范围
+  ├── S级 和 A级 情报数量
+  └── 提炼 3 个核心赛道标签
+
+模块2: 核心趋势洞察
+  ├── 基于全盘数据提炼 3-4 条宏观洞察
+  ├── 每条含：主语 + 动作 + 产业影响
+  └── 例: "具身智能商业化加速，宇树/它石/极佳三足鼎立"
+
+模块3: S级情报深度穿透 (每一条独立展开)
+  ├── [企业名称] - [一句话核心看点]
+  ├── 数据表: 融资轮次 | 金额 | 估值 | 领投方 | 跟投方
+  ├── Why Now 分析: 用博弈论或第一性原理解释为什么在这个时间点发生
+  └── 风险标定: 估值泡沫 | 技术同质化 | 退出困难
+
+模块4: A级及以下情报列表
+  └── 极简 Markdown 表格: 企业 | 轮次 | 金额 | 核心看点 (15字内)
+
+模块5: 综合风险矩阵与关键监控清单
+  ├── 风险矩阵: 风险类型 | 等级 | 描述
+  └── 关键监控清单: 3-5 个 14天-1个月内需持续跟进的硬核指标
+</pre></div>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>五、APE 独立审计层</h2>
+
+<p>APE (Agent Performance Evaluator) 是用 Gemini 3.1 Pro 搭配自定义 Prompt 搭建的审计 Agent，独立于 L1/L2 运行。它的角色不是"帮嘟嘟干活"，而是"定期评估嘟嘟干得怎么样"。</p>
+
+<h3>5.1 审计循环</h3>
+
+<div class="arch"><pre>
+每轮情报采集完成后:
+  │
+  ├── APE 独立拉取同期数据
+  ├── 与嘟嘟输出做盲对比
+  │
+  ├── 覆盖率检查: 嘟嘟漏了什么？
+  ├── 重复率检查: 嘟嘟多抓了多少重复？
+  ├── 语义准确率: LLM 提取的数据与实际报道是否一致？
+  ├── 分级准确率: S/A/B 判定是否合理？
+  └── 资源利用率: 搜索配额是否被低价值信息挤兑？
+       │
+       ▼
+  输出审计报告 → 驱动策略迭代
+</pre></div>
+
+<h3>5.2 v3.0 审计驱动的关键改进</h3>
+
+<tr><td>指标</td><td>v2.1 (审计前)</td><td>v3.0 (审计后)</td><td>改进来源</td></tr>
+<tr><td>综合评分</td><td>82%</td><td>90%</td><td>APE 全维度审计</td></tr>
+<tr><td>覆盖率</td><td>85%</td><td>88%</td><td>配额重分配</td></tr>
+<tr><td>重复率</td><td><5%</td><td><2%</td><td>3层LLM语义去重</td></tr>
+<tr><td>语义准确率</td><td>80%</td><td>95%</td><td>增强实体对齐</td></tr>
+<tr><td>资源利用率</td><td>70%</td><td>85%</td><td>价值预判阀门</td></tr>
+<tr><td>S级自动深研</td><td>无</td><td>自动触发</td><td>置信度 ≥ 0.9 联动 deep-research</td></tr>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>六、量化效果</h2>
+
+<tr><td>指标</td><td>人工</td><td>嘟嘟 v2.1</td><td>嘟嘟 v3.0</td></tr>
+<tr><td>每日信息处理时间</td><td>2h+</td><td>全自动</td><td>全自动</td></tr>
+<tr><td>信息源覆盖率</td><td>~40%</td><td>85%</td><td>88%</td></tr>
+<tr><td>S级情报/天</td><td>3-5</td><td>8-12</td><td>8-12</td></tr>
+<tr><td>A级情报/天</td><td>5-8</td><td>15-20</td><td>15-20</td></tr>
+<tr><td>重复率</td><td>~30%</td><td><5%</td><td><2%</td></tr>
+<tr><td>新机构发现</td><td>0</td><td>3-5/周</td><td>3-5/周</td></tr>
+<tr><td>新赛道发现</td><td>0</td><td>1-2/周</td><td>1-2/周</td></tr>
+<tr><td>综合评分</td><td>—</td><td>82%</td><td>90%</td></tr>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>七、踩坑记录</h2>
+
+<h3>7.1 微信推送"假成功"</h3>
+<p>**现象**：`sessions_send` 返回 `ok`，用户微信收不到。持续 3 天未发现。**根因**：API 只表示"消息送到了 Coze session"，不等于"微信 ClawBot 实际转发"。**修复**：推送后检查 `sessions_history` 验证下游处理，失败自动降级到扣子主渠道 → 兜底邮箱。</p>
+
+<h3>7.2 心跳监控形式化</h3>
+<p>**现象**：心跳 Agent 每天读同样清单然后 `NO_REPLY` 跳过，待办挂 6 天无人跟进。**修复**：心跳从"只读清单"升级为"执行验证动作 + 超时升级机制（1天→提醒，3天→升级告警）"。</p>
+
+<h3>7.3 Sub-Agent 会话膨胀</h3>
+<p>**现象**：125 个 Session 中超 100 个是历史残留 idle 任务。**根因**：`sessions_abort` 只中止不删除，Coze 无删除 API。**修复**：架构重置，禁止临时 Sub-Agent，全部走 cron。</p>
+
+<h3>7.4 L1/L2 协议分离 vs 实际执行一体</h3>
+<p>**现象**：协议设计上 L1 和 L2 是独立模块，但当前 cron session 是搜索+分级+渲染一条龙。**原因**：Coze 平台限制——workflow 和 agent 之间的调用机制不够灵活。**计划**：迁移到自有后端后实现真正的 L1/L2 解耦。</p>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>八、技术栈</h2>
+
+<tr><td>组件</td><td>实现</td></tr>
+<tr><td>Agent 平台</td><td>Coze (字节跳动)</td></tr>
+<tr><td>L2 工作流引擎</td><td>Coze Workflow (代码+插件+LLM 混合编排)</td></tr>
+<tr><td>LLM</td><td>DeepSeek-V3.2 (L2 提取), Gemini 3.1 Pro (APE 审计)</td></tr>
+<tr><td>外部集成</td><td>微信 ClawBot, 飞书 Bot, Coze 邮箱分身</td></tr>
+<tr><td>定时调度</td><td>Coze Cron (9 个活跃日程)</td></tr>
+<tr><td>搜索插件</td><td>36氪, 联网问答(免费版), IT桔子(HTTP 自配)</td></tr>
+<tr><td>文件系统</td><td>一级市场情报/数据库/事件池 + 行业赛道表 + 验证报告</td></tr>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<h2>九、如果重做会怎么改进</h2>
+
+<li>**L1/L2 真正解耦**：L1 和 L2 部署为独立服务，L1 通过 API 调用 L2，而非同一 Session 内串行</li>
+<li>**从 Coze 迁到自有后端**：Coze 的 Session 管理和权限沙箱限制太多，生产级系统需要更大的控制权</li>
+<li>**实时数据看板**：Agent 运行状态可视化（当前心跳是文本形式的，诊断效率低）</li>
+<li>**人工确认节点**：S级情报在推送到研报前加一道人工审核——VC 内容敏感度需要人性把关</li>
+<li>**IT桔子深度集成**：用现有的 `itjuzi_scraper.py` 本地脚本暴露 HTTP API，替代 L2 中的通用搜索插件</li>
+
+<hr style="border-color:#2a2a2a;margin:20px 0;">
+
+<p>*搭建时间：2026年4月 | 持续迭代中 | v3.0 策略已启用*</p>
+
+</div>
+</body>
+</html>

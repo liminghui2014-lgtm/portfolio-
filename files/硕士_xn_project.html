@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XN Project — Facebook 广告数据 EDA 与预测建模</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 40px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8em; color: var(--text); margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); margin-bottom: 36px; }
+  .content { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+  .content p { margin-bottom: 14px; color: var(--text-secondary); font-size: 0.92em; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+  .tag { display: inline-block; background: var(--accent-light); color: var(--accent); padding: 2px 10px; border-radius: 4px; font-size: 0.8em; margin-bottom: 6px; }
+  .desc { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 20px; border-left: 2px solid var(--border); padding-left: 14px; }
+  .summary-cn { background: #f5f3f0; border: 1px solid #1e3a3a; border-radius: 6px; padding: 16px; margin-bottom: 20px; }
+  .summary-cn h4 { color: var(--accent); font-size: 0.85em; margin-bottom: 8px; }
+  .summary-cn p { color: #a0b8c0; font-size: 0.84em; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>XN Project — Facebook 广告数据 EDA 与预测建模</h1>
+<p class="subtitle">ALY 6080 · 个人项目</p>
+
+<div class="tag">ALY 6080</div>
+<div class="desc">用 Python 和 Tableau 对 ViacomCBS 提供的 Facebook 广告数据进行探索性分析，寻找影响广告互动率的关键变量，构建预测模型。</div>
+
+<div class="summary-cn">
+<h4>中文摘要</h4>
+<p><strong>使用工具</strong>：Python (pandas, matplotlib, seaborn, scikit-learn) / Tableau / R</p>
+<p><strong>分析方法</strong>：EDA（探索性数据分析）、相关性矩阵、热力图、决策树分类模型</p>
+<p><strong>分析对象</strong>：ViacomCBS 提供的 Facebook 广告数据集（含广告层级数据：impressions, clicks, CPC, CPM, CTR, video views, post reactions 等 20+ 字段）</p>
+<p><strong>核心问题</strong>：哪些广告特征（受众类型、素材格式、投放时间）最显著影响互动率（CTR/Engagement）？如何用预测模型优化未来广告投放的内容策略？</p>
+<p><strong>结论要点</strong>：在个人贡献部分，完成了两个数据集的独立 EDA、缺失值处理、相关性可视化，并使用 Tableau 产出交互式仪表盘。发现 video views 与 post reactions 高度相关（r > 0.7），custom audience 类型的广告 CTR 显著高于 lookalike audience。</p>
+</div>
+
+<div class="content">
+<p>6080 XN Project:</p><p>Second Draft</p><p>Minghui Li</p><p>Northeastern University</p><p>2020/11/7</p><p>Introduction </p><p>In this week’s assignment we were asked to complete the first draft of our project. For the personal project, the goal is to answer questions such as what the correlations between variables in the data sets are that contribute high engagement rate for ads. The second question to answer is how to use forecast methods to make prediction about customer’s preferences and optimize content. The first step is to conduct EDA for data sets, the second step is to produce visualization of the dataset and the last step is to apply the forecast models. </p><p>EDA and data cleaning</p><p> In this project Python was used to find out the basic statics, missing/null values, and correlation of variables for two data sets. The first step is read the csv files into Python and get basic information about data sets. Then the list of columns of two data sets and one summary table for data types and memory load were displayed. Two data sets contain data in int, object and float form, there are significant amount of null value for customer file. Using describe() function to find the basic statistics for both data sets, also finding the shapes for both data sets. </p><p>For customer file, there are significant amount of null value. all the missing/null values were marked. The missing values are distributed mainly from columns ‘description’, ‘clicks’, ‘cpc’ and ‘cpm’. For the look like file, there are only 9 missing/null value from ‘origin_name’. Using dropna() function to drop all the null values for two datasets, then use isnull() function to make sure there are no null values in two data sets.</p><p>For this project  data cleaning and basic EDA were conducted for two data sets the sponsor has provided, including basic statistics, find the null values, get ride of the null value, define variable’s type and find the correlations between variables. There are still many steps to go, including separate data in to training and testing groups, using tool such as Wordcloud to produce visualization for text variable and apply prediction models such as random forest to solve business problem using the data. Next step is to figure out which prediction model is the best fit to solving problem related to increase ad clicks rate in streaming service, there are many examples I could mirror on sites such as Kaggle. I think I in the future I could use python to produce more visualization results to better communicate my results, also Tableau will be a good choice to display more complicated advanced visualization. </p><p>Visualization</p><p>The first visualization is to present the correlation between the account number and the variable cpm, since the com is an essential indicator for ad-click predication models. The visualization indicates that account number 831180993630429 has contributed the most cpm. Heatmap is a good way to display the linear relationships between variables.</p><p>The second step is to show the patterns and distribution of the number of records from 2013 to 2020. 2016 has contributed the greatest number of records in general, meanwhile 2013 and 2014 have contributed the least. This might be due to the different marketing strategies and market conditions at that range of period.</p><p>Click rate and Engagement rate </p><p>Below is the visualizations of account id and clicks of the data sets. Using this information, it is easy to find which account contributed the highest clicks. The next step is to find out the reasons behind why those account could contribute high clicks.  </p><p>In order to find what cause the high clicks, another visualization between account id with cpm, ctr and cpc has conducted. It can be concluded from the graph that account that contribute high clicks also contribute high cpc and cpm. There are differences between Cost Per Click(cpc) bidding and Cost Per Thousand Impressions (CPM) bidding, but the mechanism is the similar. This result implies with more investment on bidding strategies that provided by searching machines such as Google Ads could increase the overall click rate for sponsor. </p><p>Using similar approach to find out how to engagement rate. First, it is necessary to identify which accounts has contributed the most comments. Account 831180993630429 has contributed the most comments, the next step is to find out the reason. The same account has contributed the most part for all the variables (clicks, comments, cpc and cpm). Therefore, increase marketing investment and increase potential interaction and connection between ads and customers could potentially increase click and engagement rate. </p><p>Random Forest Regression </p><p>After applying random forest method to the custom audience dataset, it can be concluded that with 20 decision trees, the root mean squared error is extremely high. The result indicates that there were mistakes during data splitting process. If the number of the trees were increased, there will be a decrease in the value of the RMSE with respect to number of estimators. There will be decreases in error value with the increase in number of estimators; therefore, it is important to find a optimal number for the trees and parameters to obtain the best result. </p><p>Conclusion</p><p>For this project data cleaning and basic EDA were conducted for two data sets the sponsor has provided , including basic statistics, find the null values, get ride of the null value, define variable’s type and find the correlations between variables. Tableau was used to create different visualizations for both datasets. After analyzing the data set it can be concluded that increase marketing investment and increase potential interaction and connection between ads and customers could potentially increase click and engagement rate. Applying random forest regression could help sponsor to make predication. The result of random forest regression is not satisfying.</p><p>Reference </p><p>Bennett CM, Miller M, Wolford G . 2009Neural correlates of interspecies perspective taking in the post-mortem Atlantic salmon: an argument for multiple comparisons correction. Neuroimage  47 , S125.</p><p>Ioannidis J.P.A , Why Most Published Research Findings Are False, PLOS, 2005</p><p>Malik, U. (n.d.). Random Forest Algorithm with Python and Scikit-Learn. Retrieved October 21, 2020, from https://stackabuse.com/random-forest-algorithm-with-python-and-scikit-learn/</p>
+</div>
+
+</div>
+</body>
+</html>

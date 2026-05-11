@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>曦望芯科 · AI推理芯片</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #fff; --border: #e8e6e1;
+    --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b;
+    --accent: #2c5f8a; --accent-light: #e8f0f7; --divider: #efedeb;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 850px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 0.88em; }
+  h1 { font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 6px; }
+  .content { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 32px; margin-top: 28px; }
+  .content p { color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.84em; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid var(--divider); }
+  th { background: #f5f3f0; color: var(--text); font-weight: 600; font-size: 0.82em; }
+  td { color: var(--text-secondary); }
+  .tag { display: inline-block; background: #f3f0ec; color: #7a6e5e; padding: 2px 10px; border-radius: 4px; font-size: 0.78em; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+<h1>曦望芯科 · AI推理芯片</h1>
+<p class="subtitle">Gemini 3.1 Pro · Prompt Engineering 生成 · 约18,337字 · AI芯片 / 国产GPU</p>
+<div class="tag">AI芯片 / 国产GPU</div>
+<div class="content">
+<p>曦望芯科（Sunrise）深度产业研究报告：国产AI推理芯片的架构重构、资本逻辑与商业生态全景分析</p>
+<p>宏观视阈：全球算力重构与中国AI芯片的时代转折</p>
+<p>在过去三年中，全球人工智能产业经历了从大语言模型（LLM）参数规模狂飙的“暴力美学”阶段，向追求模型落地与商业化变现的“推理应用”阶段的深刻范式迁移。算力作为驱动这一范式迁移的底层核心基础设施，其产业逻辑与市场格局正在发生剧烈的震荡与重构。在这个宏大的历史进程中，中国作为全球最大的单一数字经济体，其本土算力供应链的自主可控与技术迭代，不仅是产业经济命题，更是关乎国家科技主权的核心战略命题。</p>
+<p>根据全球权威市场研究机构IDC发布的详尽数据与行业趋势测算，2025年中国云端AI加速器市场的格局已经发生了历史性的逆转1。报告显示，2025年中国市场AI加速卡总出货量约为400万张（通常一张加速卡对应一颗高性能GPU）1。在这400万张的庞大盘子中，中国本土芯片厂商的出货量达到了惊人的约165万张，占据了约41%的整体市场份额1。相比之下，长期处于绝对垄断地位的英伟达（NVIDIA），其在华市场份额已回落至约55%（出货量约220万张），而AMD则占据了剩余约4%（约16万张）的市场份额1。</p>
+<p>这组数据具有极其深远的二阶启示。表面上看，英伟达依然维持了超半数的市场领先地位，但这55%的份额实际上是一个“滞后指标”（Trailing Indicator）1。由于美国在2025年4月进一步收紧了出口管制政策，全面切断了英伟达专为中国市场定制的H20数据中心GPU的合法供应路径，英伟达的这部分出货量主要反映了政策收紧前窗口期的集中交付，以及部分存量渠道的消化1。正如英伟达首席执行官黄仁勋在2025年所做出的前瞻性警告，在当前的出口管制规则下，英伟达对中国数据中心算力市场的实质性前瞻收入预期正趋近于“零”1。</p>
+<p>在海外算力供给被强制熔断的宏观背景下，那占据41%市场份额的165万张国产AI芯片，标志着国产替代已经全面跨越了“能用与否”的早期试错鸿沟，正式迈入“好用与规模化部署”的深水区1。正是在这一技术断层与市场真空交汇的黄金战略期，杭州曦望芯科智能科技有限公司（简称“曦望芯科”或Sunrise）作为从亚洲顶级AI软件巨头商汤科技（SenseTime）核心部门分拆独立的新锐企业，迅速崛起并成为重塑国产算力底层架构的核心操盘者5。曦望芯科极具前瞻性地捕捉到了产业从“训练红利”向“推理红利”切换的历史性机遇，以“All-in 推理”为核心商业逻辑，致力于通过底层硬件架构的彻底重构，解决大模型商业化落地过程中最致命的成本与效率痛点7。本报告将从企业组织基因溯源、核心技术架构解构、产品矩阵与代际演进、资本市场估值逻辑扩张、跨界产业协同落地，以及全球供应链博弈下的韧性等六个维度，对曦望芯科进行详尽、透彻且全景式的深度剖析。</p>
+<p>一、 组织基因溯源：商汤生态裂变与核心双引擎架构</p>
+<p>从大厂内设硬件部门到独立算力平台的战略裂变</p>
+<p>探究一家硬科技企业的技术护城河与商业上限，首先必须深入剖析其组织发展的历史沿革与文化基因。曦望芯科并非一家平地起高楼的初创公司，其前身为商汤科技内部倾注大量资源打造的大芯片部门5。商汤科技由汤晓鸥教授与徐立等人于2014年创立，并于2021年在香港交易所成功IPO，作为亚洲最大的AI软件公司之一，其在上市初期的市值一度高达230亿美元，即便在市场波动的2024年初，其市值仍维持在50亿美元至78亿美元的区间8。</p>
+<p>2020年，基于对未来多模态大模型海量算力需求的敏锐嗅觉，商汤科技在内部正式设立了芯片研发部门，旨在实现算法与底层算力硬件的深度垂直整合6。然而，随着生成式大模型时代的全面到来，基础模型的预训练（如商汤自研的日日新SenseNova 5.0大模型）以及上层商业应用的推广，开始急剧消耗公司的现金流8。2024年底，基于极其理性的战略收敛与资本运作考量，商汤科技宣布将大芯片部门正式分拆，曦望芯科由此作为独立法人实体走向市场5。</p>
+<p>这一分拆举措在战略层面上产生了巨大的乘数效应。从母公司的角度来看，商汤在2024年12月通过配售新股成功募集了约3.58亿美元（28亿港元）用于生成式AI的开发8。剥离具有“重资产、长周期、高风险”特征的芯片流片与研发业务，使得商汤能够极大改善财报的利润表结构。更为关键的是，对于曦望芯科而言，脱离“AI软件巨头附属部门”的身份，赋予了其作为独立第三方芯片供应商的绝对中立地位。在极其敏感的算力数据安全要求下，这种中立性是曦望能够无障碍地打入包括第四范式、游族网络以及各类互联网大厂与传统工业巨头供应链的先决条件，彻底避免了因生态排他性竞争而导致的客户流失5。分拆后，商汤科技联合创始人徐冰出任曦望芯科董事长，这在保障公司独立运营的同时，又完美保留了从顶层算法前沿趋势向下定义底层硬件的战略视野6。</p>
+<p>顶配架构师与商业化专家的组织共振与互补</p>
+<p>硬科技的竞争归根结底是顶级智力资源的角逐。曦望芯科自立门户后，工程团队规模迅速从早期的150人精锐初创班底扩张至约300人的成熟建制，核心研发人员密集来自于NVIDIA、AMD、阿里巴巴、百度（特别是昆仑芯部门）以及商汤等全球顶尖的科技与半导体企业6。该团队的领导架构呈现出高度互补的“极致技术+超大规模商业化”双核驱动模式，由联席CEO王勇与王湛共同掌舵6。</p>
+<p>联席CEO王勇是一位拥有超过20年深厚芯片研发经验的顶尖架构师，曾担任AMD及百度昆仑芯的核心架构师7。自2020年加入商汤以来，他成功带领团队主导了曦望前两代芯片（S1与S2）的研发与量产，在极具挑战的先进制程下实现了“一次流片成功”（first-pass silicon success）的工程奇迹6。深入剖析王勇的技术背景，我们可以发现其在计算机视觉、视频复原算法以及多模态生成模型领域的学术积淀对其芯片架构设计产生了深远影响。根据学术文献追溯，王勇及其团队曾多次在顶级学术会议（如IEEE/CVF CVPR、ICLR等）及预印本平台发表重量级研究成果。例如，在解决视频帧间复杂运动的复原问题上，其参与设计的EDVR（Enhanced Deformable Convolutional Networks）模型通过金字塔级联与时空注意力机制，极大提升了视频复原的质量与速度，并在NTIRE 2019挑战赛中夺冠11。此外，其团队在基于Transformer的多分辨率扩散模型（Hunyuan-DiT）、大型视频生成框架（HunyuanVideo）以及通道注意力机制与多路径网络布局的结合（ResNeSt）等方面均有突破性贡献12。这种从顶层多模态算法结构（特别是对动态稀疏性、注意力机制内存访存特征的深刻理解）向下延伸的架构视野，使得曦望芯科在设计推理芯片时，能够精准预判大规模视觉语言模型（VLM）与视频生成模型在算子调度与片上缓存分配中的真实痛点，从而实现真正意义上的“软硬协同设计”（Algorithm-Hardware Co-design）。</p>
+<p>如果说王勇定义了曦望芯科技术的下限与深度，那么另一位联席CEO王湛则彻底打开了公司产品商业化的上限与广度。作为百度创始团队核心成员及原集团副总裁，王湛曾统帅高达8000人的百度搜索技术与业务团队，更是百度核心商业变现系统“凤巢”（Phoenix Nest）的总架构师6。他于2025年初正式加盟曦望芯科，全面负责产品的商业化落地7。底层极客级的硅片设计经验与万亿级互联网搜索流量分发、超大规模工程化运营经验的碰撞，使得曦望芯科跳出了传统半导体厂商“只卖裸金属参数”的窠臼。王湛深刻理解在海量高并发业务场景下，吞吐量（Throughput）、首字延迟（TTFT）、可用性（SLA）以及总体拥有成本（TCO）如何决定一项技术方案的生死。他为公司注入了极强的互联网产品化思维，致力于将冰冷的硅片转化为普惠的智能算力服务7。</p>
+<p>二、 资本路径与行业估值重构：国产GPU板块的财富效应</p>
+<p>资本狂热下的极度溢价与“全功能GPU”情结</p>
+<p>要精确刻画曦望芯科当前的资本战略与估值逻辑，必须将其置于2025年至2026年中国国产GPU企业加速资本化的宏观狂热叙事之中。这不仅是一个技术突破的故事，更是一场资本重仓“算力自主权”的盛宴。</p>
+<p>2025年12月，中国资本市场迎来了一个历史性的爆发节点。被誉为“国内GPU第一股”的摩尔线程（Moore Threads）与另一家明星企业沐曦集成电路（MetaX Integration）先后登陆上海证券交易所科创板15。这两家由前NVIDIA和AMD核心成员创立的企业的上市，引发了二级市场的极度狂热。上市首日，摩尔线程与沐曦的股价分别暴涨425.46%和逾500%（沐曦一度飙升超750%），两家公司的市值双双突破3000亿元人民币（约合430亿美元）的大关7。这一史诗级的IPO表现，不仅为红杉资本中国（Sequoia Capital China）及葛卫东等早期投资者创造了令人咋舌的账面财富效应，更彻底重塑了整个AI芯片行业的估值标尺15。</p>
+<p>从经典的财务估值模型来看，市场给予了这些尚未实现规模化正向盈利的国产GPU企业极其夸张的市销率（P/S）溢价。以摩尔线程为例，其IPO时的估值对应2024年预期营收的市销率高达惊人的约123倍16。华尔街大行高盛（Goldman Sachs）的估值模型与路透社的共识预测进一步指出，即便将时间线拉长至2026年，摩尔线程与寒武纪（Cambricon）的市销率仍将维持在40倍至100倍以上的超高水平17。以寒武纪为例，其作为老牌AI芯片公司，在这一轮热潮中迎来了市场对其生态护城河的重新评估；而在香港寻求IPO的另一家明星独角兽壁仞科技（Biren Technology），其IPO后估值达到了800亿港元，机构在进行估值推演时，参考了摩尔线程与沐曦的对标数据，即便给予40%的折价，壁仞科技在2025年的预期市销率依然高达104倍17。</p>
+<p>甚至连百度的AI芯片研发子公司昆仑芯（Kunlunxin），也借此东风谋求在香港独立上市，估值底线设定在30亿美元以上，高盛预测至2026年昆仑芯的销售规模将超越摩尔线程与壁仞科技，仅次于寒武纪17。这种完全脱离传统半导体行业财务回报周期（通常半导体硬件企业的成熟期P/E在15-30倍左右）、带有强烈“战略安全溢价”和“生态期权”属性的估值体系，深刻反映了产业界与资本市场对解决“算力卡脖子”问题、实现从硬件到算子库全面自主可控的极度渴望与不计成本的投入15。</p>
+<p>曦望芯科的融资节奏与资本生态圈的纵深布局</p>
+<p>正是在这样充沛乃至狂热的行业资本红利下，曦望芯科展现出了惊人的“吸金”与资源统合能力。据可靠披露，自2024年底分拆独立后的一年时间内，曦望芯科已累计完成近30亿元人民币（折合约4.31亿美元）的巨额融资7。</p>
+<p>回顾其财务发展脉络，可以清晰地看到资本赋能对其估值跃升的催化作用。工商注册信息显示，曦望的主体运营公司为杭州曦望芯科智能科技有限公司，由上海振两智能科技有限公司全资控股，法定代表人为王勇6。在早期的2024财年，作为商汤内部孵化部门，其披露的独立营收仅为微不足道的3.35万美元，而伴随巨额研发投入产生的净亏损则高达2647万美元6。2025年5月，当A股上市公司北京利尔（Beijing Li'er）及其董事长赵伟合计斥资3483万美元对上海振两进行战略投资时，曦望芯科的投前估值仅为约2.0895亿美元6。</p>
+<p>然而，随着其S2芯片的成功量产以及资本市场的整体沸腾，曦望芯科在最近一轮（即Pre-A轮/A轮）融资中，成功席卷了近10亿元人民币（约合1.39亿美元）的新进资本5。这一轮融资的战略意义不仅在于金额的庞大（公开信息显示，为了研发前两代芯片，其沉没研发成本已高达20亿元人民币），更在于其构建了一个极其多元化且背景深厚的“资本生态圈”7。</p>
+<p>曦望芯科的投资方矩阵可以拆解为三大阵营：</p>
+<p>顶级财务与VC/PE机构：包括IDG资本、高榕创投、松禾资本、中金资本、普华资本、易方达资本、无极资本、心资本等。这保障了公司在后续寻求科创板或港股IPO时拥有强大的资本背书与保荐资源7。</p>
+<p>国家队与国资背景基金：包括诚通混改基金、工银投资、杭州数据集团、海通开元等。在信创（信息技术应用创新产业）大规模替代的背景下，国资入局为曦望芯科参与国家级智算中心招投标提供了无形的信用担保5。</p>
+<p>深度绑定的产业战略投资方：这是曦望资本运作最精妙的一环。其引入了三一集团（SANY Group）旗下的华胥基金、AI软件龙头第四范式（4Paradigm）、泛娱乐与游戏巨头游族网络（Yoozoo Interactive）、专注于具身智能的正大机器人（CP Robotics）、新能源光伏巨头协鑫科技（GCL Technology Holdings）以及传统重工业的北京利尔5。</p>
+<p>这种产业资本的深度布局，绝非单纯的财务投资，而是曦望芯科为了提前锁定下游庞大应用市场而进行的“生态预售”。从数据中心、大模型推理服务、泛娱乐NPC生成、具身智能机器人控制，到重工业自动化决策，曦望芯科通过股权纽带，构建了一个庞大且确定性极强的B端客户蓄水池。</p>
+<p>三、 技术架构的底层革命：“All-in 推理”与极致降本的工程实践</p>
+<p>逃离“算力税”的战略抉择：大模型商业化的生死线</p>
+<p>商汤科技联合创始人、曦望芯科董事长徐冰曾一针见血地指出了当前中国AI产业的结构性困境：“中国每年支付的算力税（computing power tax）超过139.3亿美元。在AGI（通用人工智能）时代，计算的自主权就如同氧气一般至关重要。”6 这一论断构成了曦望芯科技术战略的最底层逻辑。</p>
+<p>当前，整个全球AI芯片产业正处于一个极其关键的历史拐点——从“训练红利”期向“推理红利”期切换7。在过去几年，以OpenAI为首的科技巨头们不计成本地堆叠由数万张英伟达A100/H100/B200组成的超级计算集群，以期在千亿乃至万亿参数的基础大模型竞赛中拿到入场券。在这个阶段，算力支出被视为“资本开支”（CapEx），企业关注的是算力集群的互联带宽与稳定训练天数。然而，当大模型的基座能力逐渐收敛，技术重心转向各种垂直行业的智能体（Agent）应用、实时多模态交互与Copilot辅助生成时，推理环节的成本效率就成为了决定AI商业模式能否闭环的生死线。</p>
+<p>大模型的训练任务高度依赖于节点间的高频海量通信（All-Reduce操作）以及庞大的HBM显存带宽，以支持反向传播中的梯度更新。而推理任务（尤其是自回归生成阶段的Token decoding）则呈现出截然不同的特征：它是一个典型的访存密集型（Memory-bound）计算。在生成每一个Token时，芯片必须将庞大的模型权重从显存中完整读取一次，计算量（FLOPs）相对较小，但对显存带宽和显存容量的榨取却达到了极限。这就导致了经典的“内存墙”（Memory Wall）效应。如果继续采用英伟达那种为“训推一体”优化、堆砌海量浮点运算单元与昂贵HBM内存的通用GPU架构来做推理，将导致极大的算力资源闲置与高昂的单次推理成本。</p>
+<p>基于这一深刻认知，曦望芯科做出了一个在当时看似冒险、实则极其务实的战略决策：坚决摒弃传统通用GPU在调度机制上兼顾训练的设计包袱，押注“All-in 推理”7。</p>
+<p>原生架构重构：LPDDR6与低精度量化的破局</p>
+<p>在具体的工程实现路径上，曦望芯科在调度引擎、缓存层级（Cache Hierarchy）、片上SRAM容量、互联协议以及编译器路径上进行了深度的大洗牌与原生架构重构7。其中最具颠覆性的架构革新，在于其对存储子系统的大胆替换。</p>
+<p>长期以来，HBM（高带宽内存）被视为高性能AI加速卡的行业标配。然而，HBM不仅BOM（物料清单）成本极其高昂，其供应链更是被SK海力士、三星和美光等少数几家国际寡头牢牢把控，且受到地缘政治与先进封装（如CoWoS）产能的严苛限制。为了从根本上绕开这一死结，曦望芯科开创性地引入了移动端与边缘计算领域常用的LPDDR（Low-Power Double Data Rate）内存技术，特别是最新一代的LPDDR6标准，结合极大扩充的片上超大容量SRAM（静态随机存取存储器），构建了一套全新的缓存层级调度策略7。</p>
+<p>以其即将于2026年量产的核心产品曦望S3（Qiwang S3）芯片为例，该产品是中国乃至全球范围内首款明确采用LPDDR6内存解决方案的通用计算图形处理器（GPGPU）22。虽然LPDDR的单引脚绝对带宽不及HBM，但通过拓宽内存通道、大幅增加内存颗粒数量，并在芯片内部集成远超常规架构的超大SRAM作为极速缓存层，曦望不仅弥补了带宽的相对劣势，更利用LPDDR的高容量、低成本特性，使得S3能够提供高达前代产品4倍的显存容量22。这对于动辄需要数百GB显存来容纳KV Cache（键值缓存）以支持长上下文窗口（Long Context）的大模型推理而言，是极其致命的竞争优势。</p>
+<p>与此同时，为了进一步压榨芯片的吞吐潜能，曦望S3在算术逻辑单元（ALU）层面实现了从FP16（16位浮点数）一路向下兼容至FP8乃至极低精度FP4（4位浮点数）的灵活多精度原生计算支持7。在神经网络量化（Quantization）理论中，将模型权重和激活值从FP16压缩至FP8或FP4，不仅能将所需显存容量直接减半或减至四分之一，更能成倍地降低对访存带宽的需求，从而让芯片的运算单元持续处于满载状态。</p>
+<p>这种通过“低精度计算引擎 + 超大SRAM + LPDDR6海量高性价比内存”的软硬协同架构革新，产生了立竿见影的成本压缩效应。据曦望芯科内部针对主流大模型（如拥有数百亿乃至千亿参数的DeepSeek V3 / R1的满血版部署）的测算，S3架构能够将单位Token的推理成本大幅压降约90%，在能效比上实现了数量级的跨越5。这种逾十倍的成本效率提升，使得公司有底气将目标直指“100万Token仅需一分钱”的行业全新基准线7。正如联席CEO王湛所宣示的：“如果我们能让推理成本下降90%，并提供更稳定的SLA服务，我们的竞争维度就不再是为市场提供‘又一个普通的备胎芯片’，而是去‘彻底重写中国乃至全球AI产业的损益表’，让算力变得真正普惠，从而彻底释放AGI的经济潜力。”7</p>
+<p>四、 三代产品矩阵与全栈算力生态：从云端视觉到多模态超节点</p>
+<p>遵循半导体行业残酷的摩尔定律，曦望芯科摒弃了PPT造车的浮夸，坚持“量产一代、发布一代、预研一代”的极其稳健的流片与商业化节奏22。历经数年、耗资数十亿的持续研发，曦望已构建起一套覆盖从端侧视觉推理到云端多模态大模型全场景推理的严密产品矩阵7。</p>
+<p>曦望S1：云边视觉推理的开疆拓土与IP化赋能</p>
+<p>曦望S1是公司技术实力的最初展露，于2020年成功实现量产7。这是一款专为云边协同计算场景量身定制的视觉推理专用芯片5。在架构设计上，S1采用了领域专用架构（DSA，Domain-Specific Architecture），通过牺牲一部分通用计算的灵活性，换取了在特定计算机视觉（CV）算子执行上的极致能效比与极低延迟5。</p>
+<p>在软件生态的打磨上，S1成功向下适配并深度优化了千余种主流与定制化的计算机视觉模型，在智慧城市、安防监控、工业视觉瑕疵检测等视频分析场景中表现优异5。目前，S1已经实现了超过2万片的规模化实体芯片出货5。更具战略意义的是，S1底层的优秀架构设计不仅以硬件形式变现，还成功转化为IP核（知识产权），并顺利授权给包括索尼（Sony）、小米等在全球消费电子与图像传感器领域占据统治地位的头部巨头7。这一里程碑事件，标志着曦望底层的硅知识产权（SIP）质量已经达到了国际一流消费电子厂商的严苛准入标准。</p>
+<p>曦望S2：兼容CUDA生态的GPGPU破局之战</p>
+<p>面对2023年以来大语言模型（LLM）算力需求的井喷，曦望芯科迅速响应，于2024年实现了第二代核心产品曦望S2的量产7。与S1的DSA路线不同，S2被重新定位于通用大模型推理GPGPU（通用图形处理器），其核心性能指标全面对标英伟达占据市场主力的A100与H系列GPU加速卡5。</p>
+<p>在这一代产品中，曦望做出了一个极其务实且决定性的战略妥协与突破：实现对CUDA生态的完全兼容5。对于广大的下游企业级客户及AI开发者而言，迁移底层算力平台的最大阻力，从来不是新芯片标称的TFLOPs（每秒万亿次浮点运算）峰值不够高，而是长期建立在NVIDIA CUDA编程模型之上、极其庞大且复杂的现有代码库、算子库与软件工具链无法平滑移植。历史上，即便是AMD倾注全力打造的ROCm生态，也在对抗CUDA的战役中步履维艰。S2通过提供无缝的CUDA指令级或算子级兼容与编译转换工具链，极大地粉碎了企业部署国产大模型的生态门槛。通过这一“借船出海”的策略，S2已成功在底层完美适配了目前国内最受瞩目的DeepSeek、阿里通义千问（Qwen）等主流开源与闭源大模型，并迅速进入了万片级（数万颗）的规模化量产交付阶段，成为当下曦望在政企智算中心市场攻城略地的绝对主力5。</p>
+<p>曦望S3及未来演进图谱：全栈多模态超节点的降维打击</p>
+<p>规划于2026年正式商业化量产的曦望S3，是公司实现其“一分钱百万Token”战略愿景的集大成之作5。根据2026年1月27日曦望在杭州正式披露的三年产品路线图，S3彻底走向了“全自研架构”的深水区，其定位是针对未来计算核心——多模态大模型推理的“性价比之王”5。它在保留对CUDA生态兼容性的同时，全面搭载了前文所述的LPDDR6内存解决方案与FP4原生低精度计算引擎5。</p>
+<p>尤为值得关注的是，曦望芯科在S3阶段的商业模式已经完成了从“卖单芯片”向“卖全栈算力系统”的跃迁。伴随S3芯片的发布，曦望同步推出了“Huanwang SC3”（幻望SC3）大模型推理超级节点解决方案，并启动了专属的推理云服务倡议（Inference Cloud Initiative）22。这标志着曦望已经构建起一套涵盖底层硬件加速卡、高密度大模型服务器、万卡级计算集群网络、专有的底层编译软件栈（Software Stack）以及全生命周期模型部署服务的平台级战略6。</p>
+<p>在更长远的规划中，曦望清晰地界定了未来三年的技术路标：继2026年推出主打极致性价比的S3之后，2027年将推出主攻绝对性能巅峰的推理GPU“曦望S4”（Qiwang S4）；而到了2028年，则将发布主打政企核心部门安全可控的推理GPU“曦望S5”（Qiwang S5）22。这种“一步一个脚印”的代际演进，展现了极强的产业定力与技术自信。</p>
+<p>为直观呈现这种技术跃迁，下表系统整理了曦望芯科三代核心产品的技术规格与商业定位演进：</p>
+<p>(数据来源：基于深度产业调研及公开技术信息交叉印证 5)</p>
+<p>五、 产业下沉与跨界商业闭环：以北京利尔的战略合作为鉴</p>
+<p>硅片上晶体管数量的堆砌与跑分软件上的耀眼数据，仅仅是国产AI芯片企业活下去的第一步。在B端市场，如何将算力以最低的迁移成本无缝嵌入千行百业真实、复杂的业务流中，才是真正实现商业闭环的试金石。在此背景下，曦望芯科与中国传统重工业巨头——A股上市公司北京利尔（股票代码：002392.SZ）的深度战略绑定与交叉投资，提供了一个极具研究价值的跨界产业协同范本。</p>
+<p>北京利尔是中国耐火材料行业的绝对领军企业，常年深耕于钢铁、建材、有色金属等高温工业领域。2024年，北京利尔以约3.0%的市场份额稳居全国耐火材料行业首位；2025年，其全年的营业收入达到了6.97亿元人民币，实现归属母公司股东的净利润达4.01亿元人民币23。表面上看，一家做高温耐火砖的传统制造业巨头，与一家做最前沿先进制程AI芯片的独角兽企业之间存在着巨大的鸿沟。但实际上，两者在工业制造的智能化升级诉求上找到了极其精准的契合点。</p>
+<p>耐火材料的生产以及下游钢铁冶炼制造，是典型的高能耗、多变量、流程型重工业。生产流程中的窑炉温度精准控制、特种材料组分的配比优化、核心设备全生命周期的预测性维护，以及庞大供应链的动态调度，对全局寻优有着极高的要求。传统的基于规则的工业软件（如传统的ERP或MES系统）在处理这种多维度连续变量时已显得捉襟见肘，急需引入具备强大泛化能力的工业AI垂直大模型。</p>
+<p>基于这种内生需求，2025年5月，北京利尔耗资3483万美元对曦望芯科的母公司进行了重金战略投资，直接下场押注算力赛道6。随后在2025年9月4日，北京利尔与商汤科技及曦望芯科正式签署了一份重量级的《战略合作协议书》24。同年11月，北京利尔董事长赵伟更是亲自带队造访曦望芯科杭州总部，就AI技术与工业场景的深度融合达成深度共识23。</p>
+<p>这份战略协议的内核不仅仅是技术咨询，而是真金白银的业务捆绑。三方拟在AI算力设施共建、工业制造与决策AI垂直模型的定向开发及智能体（Agent）推广应用方面展开深度协同24。协议中最具颠覆性的条款在于：在明确市场需求的前提下，北京利尔将与曦望芯科成立算力业务的联合体，优先大批量采购已经成熟量产的曦望S1、S2芯片，以及即将量产的低成本S3推理芯片，共同投资建设工业级算力租赁设施（AI数据中心）25。更为关键的是，北京利尔将利用其长期深耕、覆盖国内一百多家大型钢铁企业的庞大B端客户关系网，将这些搭载曦望芯片的AI数据中心与垂直大模型直接推广、下沉至各大钢铁企业的生产一线上24。</p>
+<p>这种极具创新的跨界合资模式，为曦望芯科带来了三层深刻的战略价值：</p>
+<p>开辟高壁垒蓝海市场：在互联网大厂算力招投标极度内卷的当下，曦望芯科通过利益捆绑，直接切入了一个封闭性极强、且支付能力稳定可观的传统重工业市场。钢铁企业不需要购买极其昂贵（且难以买到）的数千张英伟达H100集群去从头预训练大模型；他们真正需要的是，能够在本地私有化部署、基于开源架构（如Llama 3或DeepSeek）结合自身海量生产运行数据进行微调（Fine-tuning）后，提供低延迟、高可靠且极其廉价的边缘推理平台。</p>
+<p>验证“极致降本”路线的商业有效性：曦望S2及采用LPDDR6方案的S3芯片，凭借其大幅降低的初始采购成本（CapEx）与运行功耗成本（OpEx），正是这种重工业边缘节点与垂直AI模型落地的最优解。</p>
+<p>拓展前沿材料研发的AI增量空间：北京利尔自身也在积极谋求转型，其近期宣布了高达10.34亿元人民币的定向增发计划，巨资投入包括新能源固态电池电解质/正极材料、航空航天用复合氧化锆及锆基材料（规划产能高达3万吨）的尖端研发，并在越南布局海外基地23。AI大模型在加速新材料配方发现（AI for Science）领域的潜力巨大，这也为曦望算力在新材料研发层面的深度融合留下了无尽的想象空间。</p>
+<p>六、 供应链博弈、地缘政治与先进产能韧性</p>
+<p>在描绘了令人振奋的技术蓝图与庞大的商业生态之后，审慎、客观地审视曦望芯科及所有中国本土GPU厂商所面临的极度严苛的全球供应链约束，是进行全面产业评估的必要环节。在全球地缘政治急剧摩擦与半导体供应链阵营化的宏观背景下，高端晶圆代工（Foundry）产能与先进封装产能，无疑是悬在所有无晶圆厂（Fabless）AI芯片设计公司头顶的达摩克利斯之剑。</p>
+<p>当前，全球绝大多数高性能AI加速卡（包括英伟达与AMD的主力产品）的制造，都患有严重的“台积电（TSMC）依赖症”。这不仅仅是因为台积电在4nm/3nm先进制程上的绝对领先，更是因为其掌握着目前唯一能够大规模、高良率实现HBM与GPU Die集成的2.5D/3D先进封装技术——CoWoS（Chip on Wafer on Substrate）28。</p>
+<p>进入2025年下半年，随着全球科技巨头对AI基础设施投资的持续加码，台积电虽然在拼命扩充产能，但来自顶级大客户的庞大订单仍导致CoWoS产能长期处于极度紧缺与超载状态。据业内供应链调研传闻，不仅台积电自身的先进封装产能告急，即使紧急寻求日月光（ASE）、欣兴电子（Unimicron）等台湾封装及载板产业链企业的产能支援，整个大芯片市场的CoWoS配套产能仍面临高达10%至20%的巨大刚性缺口30。</p>
+<p>更为致命的是，在日益收紧的国际出口管制政策与技术封锁态势下，中国大陆的AI芯片设计公司在获取最尖端代工节点及稀缺的CoWoS封装服务时，往往处于排序劣势，甚至面临随时被切断供应链的不可抗力风险。</p>
+<p>正是在这种随时可能面临“断供”危机的供应链底色下，曦望芯科在S3架构设计上所展现出的工程智慧与生存韧性（Resilience）得以再次凸显。如前文所述，通过在微架构层面进行极其艰苦的原生创新，采用LPDDR6内存矩阵结合大容量片上SRAM的方案，成功替代了业界盲目追捧的HBM架构7。这一“降维工程”不仅斩断了对高昂HBM内存颗粒的依赖，更具有战略意义的是，它实质性地大幅降低了芯片制造在后端环节对CoWoS等最尖端2.5D/3D先进封装技术的病态依赖。</p>
+<p>无需采用极其复杂且良率敏感的硅中介层（Silicon Interposer）来进行HBM互联，使得曦望S3的芯片封装可以使用相对成熟、产能充足且不受严苛地缘政治管制的标准倒装芯片（Flip-Chip）或基板级封装技术完成。这种在架构设计初期就将“供应链极度恶化场景”纳入考量的底线思维，极大提高了曦望芯片在未来数年内的量产确定性与交付能力。这也是其之所以能够豪迈宣称维持“量产一代、发布一代、预研一代”快节奏演进的坚实底气所在22。</p>
+<p>结语</p>
+<p>综上所述，曦望芯科（Sunrise）通过从商汤科技的战略分拆，不仅卸下了重资产投入的历史包袱，更在极短时间内吸纳了近30亿元人民币的顶尖产业与财务资本，迅速成长为中国算力自主可控版图中最具攻击性与爆发力的一支核心生力军。在全球AI算力市场范式从预训练向万物推理转移的历史关键期，曦望芯科以卓越的前瞻性提出了“All-in 推理”的核心战略。其团队凭借深厚的底层算子优化与多模态架构经验，通过从底层计算调度机制到内存物理架构（全面拥抱LPDDR6与FP4低精度引擎）的彻底重构，成功在被英伟达统治的GPGPU市场中撕开了一道性能与成本的突破口。</p>
+<p>凭借联席CEO王勇等人代表的硬核技术底蕴，以及王湛注入的互联网级流量商业化敏锐度，曦望芯科不仅构建了兼容CUDA生态的极高技术护城河，更通过与北京利尔等传统工业巨头深度的跨界资本与业务融合，率先在重工业B端市场跑通了从裸芯片设计到算力中心运营、再到垂直应用落地的商业闭环。同时，其架构创新在无形中极大地提升了面对全球先进封装产能短缺与地缘政治封锁时的供应链韧性。</p>
+<p>放眼未来，曦望芯科能否从百亿估值的独角兽真正蜕变为支撑千亿数字经济体的高性能算力基石，将不再仅仅取决于其单颗芯片在评测跑分上的指标堆砌。真正的考验在于：其围绕Huanwang SC3超节点构建的全栈开发者生态能否持续繁荣壮大；其基于LPDDR6的革命性架构能否如期在2026年兑现“百万Token一分钱”的颠覆性成本承诺；以及在波谲云诡的全球半导体博弈中，其团队能否始终保持战略定力与演进敏捷性。在国产AI加速卡市场份额已经强势突破41%的历史拐点之上，曦望芯科正在用极其务实的工程量产行动证明，中国底层算力企业完全有能力不再做跟随者，而是通过架构的升维创新，彻底重写全球人工智能产业繁荣的底层损益表。</p>
+<p>引用的著作</p>
+<p>Nvidia's China AI Chip Market Share Fell From 95% to 55%: How US Export Controls Accelerated Huawei's Rise | by Zoom In AI | Activated Thinker - Medium, 访问时间为 四月 24, 2026， https://medium.com/activated-thinker/nvidias-china-ai-chip-market-share-fell-from-95-to-55-how-us-export-controls-accelerated-66076a0c574d</p>
+<p>2025年中国AI芯片市场：华为20%、海光2% - C114通信网, 访问时间为 四月 24, 2026， https://m.c114.com.cn/w5339-1307974.html</p>
+<p>China's domestic AI chip market just hit 41% share and nobody here seems to be talking about it : r/investing - Reddit, 访问时间为 四月 24, 2026， https://www.reddit.com/r/investing/comments/1snwzwo/chinas_domestic_ai_chip_market_just_hit_41_share/</p>
+<p>2025年国内AI加速卡市场：英伟达市占率跌至55%，AMD排第四 - 新浪财经, 访问时间为 四月 24, 2026， https://finance.sina.com.cn/roll/2026-04-02/doc-inhtcspq0784075.shtml</p>
+<p>国产AI芯片公司曦望融资近10亿元，2026年量产第三代多模推理算力 ..., 访问时间为 四月 24, 2026， https://finance.ifeng.com/c/8l5eKqTHNhb</p>
+<p>Sunrise Raises $139 Million in Pre-A Round as China Ramps Up ..., 访问时间为 四月 24, 2026， https://en.tmtpost.com/post/7631996</p>
+<p>曦望完成近30亿融资！前身为商汤科技大芯片部门将专注于推理GPU ..., 访问时间为 四月 24, 2026， https://www.moomoo.com/hans/news/post/64409561/xi-wang-has-completed-nearly-3-billion-yuan-in-financing</p>
+<p>Hong Kong-Listed China AI Company $7.8 Billion SenseTime 2024 ..., 访问时间为 四月 24, 2026， https://www.caproasia.com/2025/07/20/hong-kong-listed-china-ai-company-7-8-billion-sensetime-2024-spinoff-gpu-chip-developer-sunrise-raised-139-million-in-series-a-funding-investors-include-huaxu-capital-4paradigm-yoozoo-interactiv/</p>
+<p>Xi Wang has completed nearly 3 billion yuan in financing! Formerly the large chip department of SenseTime, it will focus on the research and development of inference GPUs., 访问时间为 四月 24, 2026， https://news.futunn.com/en/post/67760144/xi-wang-has-completed-nearly-3-billion-yuan-in-financing</p>
+<p>Xi Wang has completed nearly 3 billion yuan in financing! Formerly the large chip department of SenseTime, it will focus on the research and development of inference GPUs. - Moomoo, 访问时间为 四月 24, 2026， https://www.moomoo.com/news/post/64409561/xi-wang-has-completed-nearly-3-billion-yuan-in-financing</p>
+<p>Champions in NTIRE Challenge 2019 | College of Computing and Data Science | NTU Singapore, 访问时间为 四月 24, 2026， https://www.ntu.edu.sg/computing/news-events/news/detail/champions-in-ntire-challenge-2019</p>
+<p>Whack-a-Chip: The Futility of Hardware-Centric Export Controls - arXiv, 访问时间为 四月 24, 2026， https://arxiv.org/html/2411.14425v1</p>
+<p>QVGen: Pushing the Limit of Quantized Video Generative Models - arXiv, 访问时间为 四月 24, 2026， https://arxiv.org/html/2505.11497v1</p>
+<p>ResNeSt: Split-Attention Networks - CVF Open Access, 访问时间为 四月 24, 2026， https://openaccess.thecvf.com/content/CVPR2022W/ECV/papers/Zhang_ResNeSt_Split-Attention_Networks_CVPRW_2022_paper.pdf</p>
+<p>China's GPU Duo Ignites STAR Market: Moore Threads and MetaX Integration See Soaring Valuations, Shifting AI Chip Investment Logic - BigGo Finance, 访问时间为 四月 24, 2026， https://finance.biggo.com/news/hOl1MpsBnz5vdl4A6OUC</p>
+<p>Moore Threads (China's Nvidia) Soars 400% on Shanghai IPO Debut - SoftwarePlaza, 访问时间为 四月 24, 2026， https://www.softwareplaza.com/it-magazine/moore-threads-china-nvidia-soars-400-on-shanghai-ipo-debut</p>
+<p>How much is Kunlun Core, held by Baidu, worth? Goldman Sachs: If compared to Cambricon's valuation, it is equivalent to 45% of Baidu's current market value., 访问时间为 四月 24, 2026， https://news.futunn.com/en/post/66891320/how-much-is-kunlun-core-held-by-baidu-worth-goldman</p>
+<p>Daily Brief China: Shanghai Biren Intelligent Technology, China Bluechemical Ltd H and more | Smartkarma, 访问时间为 四月 24, 2026， https://www.smartkarma.com/home/daily-briefs/daily-brief-china-shanghai-biren-intelligent-technology-china-bluechemical-ltd-h-and-more/</p>
+<p>China's AI Chip IPO Boom Heats Up With Moore Threads, Biren, and - GuruFocus, 访问时间为 四月 24, 2026， https://www.gurufocus.com/news/4079284/chinas-ai-chip-ipo-boom-heats-up-with-moore-threads-biren-and-baidus-kunlunxin-in-focus?mobile=true%3Fmobile%3Dtrue&amp;mobile=true%3Fmobile%3Dtrue%3Fmobile%3Dtrue&amp;mobile=true&amp;mobile=true</p>
+<p>Shanghai Biren Technology (SEHK:6082) - Stock Analysis - Simply Wall St, 访问时间为 四月 24, 2026， https://simplywall.st/stocks/hk/semiconductors/hkg-6082/shanghai-biren-technology-shares</p>
+<p>SenseTime - 2026 Company Profile, Team, Funding, Competitors &amp; Financials - Tracxn, 访问时间为 四月 24, 2026， https://tracxn.com/d/companies/sensetime/__TYBZqBJ5UjfzVfsWzQ-QKCGMwYUZI_bdO6UjHZ5gF6w</p>
+<p>[News] China's GPU Vendors Roll Out New Architectures and Products, Taking Aim at NVIDIA - TrendForce, 访问时间为 四月 24, 2026， https://www.trendforce.com/news/2026/02/10/news-chinas-gpu-vendors-roll-out-new-architectures-and-products-taking-aim-at-nvidia/</p>
+<p>Beijing Lirr High-Temperature Materials (002392) News Flow ..., 访问时间为 四月 24, 2026， https://www.futunn.com/en/stock/002392-SZ/news</p>
+<p>北京利尔与商汤科技、曦望战略合作探索开展AI相关领域业务 - 证券时报, 访问时间为 四月 24, 2026， https://stcn.com/article/detail/3322125.html</p>
+<p>北京利尔(002392.SZ)与商汤科技、曦望达成战略合作协议_亿欧快讯, 访问时间为 四月 24, 2026， https://www.iyiou.com/briefing/202509041819419</p>
+<p>北京利尔与商汤科技、曦望芯科签战略合作协议，聚焦AI业务布局 - 新浪财经, 访问时间为 四月 24, 2026， https://cj.sina.cn/articles/view/7935425109/1d8fcfa5502001axs2</p>
+<p>北京利尔高温材料股份有限公司关于签署战略合作协议的公告, 访问时间为 四月 24, 2026， http://static.cninfo.com.cn/finalpage/2025-09-05/1224639021.PDF</p>
+<p>TSMC Corporate Social Responsibility Report, 访问时间为 四月 24, 2026， https://esg.tsmc.com/download/csr/2018_tsmc_csr_report_published_May_2019/english/pdf/e_all.pdf</p>
+<p>Annual Report 2024 - TSMC Investor Relations, 访问时间为 四月 24, 2026， https://investor.tsmc.com/sites/ir/annual-report/2024/2024%20Annual%20Report_E.pdf</p>
+<p>Jan W2｜Technology News Highlight : MediaTek's Wi-Fi 8 Chip Platform Unveiled at CES, 访问时间为 四月 24, 2026， https://witology.com.tw/en/post/2031/</p>
+<table>
+<tr><th>核心特性与维度</th><th>曦望S1 (已规模量产)</th><th>曦望S2 (已规模量产)</th><th>曦望S3 (预计2026年商业化量产)</th></tr>
+<tr><td>产品核心定位</td><td>云边视觉专用推理芯片</td><td>大模型推理通用GPU (GPGPU)</td><td>多模态大模型推理核心算力卡</td></tr>
+<tr><td>底层硬件架构</td><td>领域专用架构 (DSA)</td><td>通用GPU架构 (GPGPU)</td><td>聚焦推理极致降本的全自研架构</td></tr>
+<tr><td>软件生态兼容性</td><td>专为视觉模型优化，适配千余种传统CV模型</td><td>完全且深度兼容CUDA生态，打破迁移壁垒</td><td>持续兼容CUDA，提供专有全栈底层编译软件支持</td></tr>
+<tr><td>显存与存储技术</td><td>传统消费级/工业级内存架构</td><td>匹配主流A100级别的显存带宽架构</td><td>国内首发LPDDR6内存解决方案，实现4倍容量飞跃</td></tr>
+<tr><td>运算精度支持</td><td>INT8/FP16 (主要针对图像与视频数据)</td><td>以FP16/BF16为主</td><td>原生支持从FP16向下至FP8、FP4的灵活混合精度计算</td></tr>
+<tr><td>性能/商业对标</td><td>具有极高能效比，已出货超2万片，获海外巨头IP授权</td><td>性能直指英伟达A100，实现数万片级量产落地，完美适配DeepSeek/Qwen</td><td>旨在将主流模型推理成本压降90%，目标“百万Token一分钱”</td></tr>
+<tr><td>系统级产品形态</td><td>单片加速卡或小型边缘计算模组</td><td>企业级标准大模型服务器节点</td><td>提供Huanwang SC3大模型推理超级节点及配套算力云服务</td></tr>
+</table>
+</div>
+</div>
+</body>
+</html>

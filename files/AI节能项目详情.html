@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI节能项目 — 完整方案</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 40px 20px; }
+  .container { max-width: 850px; margin: 0 auto; }
+  h1 { font-size: 1.8em; color: var(--text); margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); margin-bottom: 36px; }
+  h2 { color: var(--text); font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 8px; margin: 36px 0 16px; }
+  h3 { color: var(--text); font-size: 1.05em; margin: 20px 0 8px; }
+  p, li { color: var(--text-secondary); font-size: 0.95em; }
+  ul, ol { padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  .box { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin: 16px 0; }
+  .box pre { font-family: "Courier New", monospace; font-size: 0.82em; color: #b0b0b0; white-space: pre-wrap; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9em; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--divider); }
+  th { color: var(--text-tertiary); font-weight: 600; font-size: 0.85em; }
+  .highlight { background: var(--card); border-left: 3px solid #60a5fa; padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+  .vs-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media (max-width: 600px) { .vs-box { grid-template-columns: 1fr; } }
+  .vs-good { background: #0a2a1a; border: 1px solid #1a4a2a; border-radius: 8px; padding: 16px; }
+  .vs-bad { background: #2a0a0a; border: 1px solid #4a1a1a; border-radius: 8px; padding: 16px; }
+  .vs-good h4 { color: #22c55e; margin-bottom: 8px; }
+  .vs-bad h4 { color: #ef4444; margin-bottom: 8px; }
+  .vs-good li, .vs-bad li { color: var(--text-secondary); font-size: 0.88em; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>⚡ AI节能项目 — 完整方案</h1>
+<p class="subtitle">施耐德电气 SpaceLogic AI BOX · 合同能源管理(EMC)模式 · 2024.3 — 至今</p>
+
+<!-- 角色和定位 -->
+<div class="highlight">
+<p><strong>我的角色：项目操盘手 · 联合创始人。</strong>负责商业架构设计（EMC模式+基准线算法+三层法人架构）、投标策略（技术方案+竞争差异化+资质包装）、商务谈判（政府关系+甲方对接）。</p>
+</div>
+
+<!-- 一、完整解决方案 -->
+<h2>一、完整解决方案</h2>
+
+<h3>1.1 硬件层：施耐德 SpaceLogic AI BOX</h3>
+<p>核心是一个边缘计算盒子，部署在污水厂/工厂机房：</p>
+
+<div class="box">
+<pre>
+┌────────────────────────────────────────────┐
+│           SpaceLogic AI BOX                 │
+├────────────────────────────────────────────┤
+│  传感器层                                   │
+│  流量计 · 智能电表 · 温度传感器 · 压力传感器     │
+│         ↓ LoRa / NB-IoT 无线传输             │
+│  数据采集单元 → 数据处理单元(CPU) → 本地存储    │
+│         ↓                                   │
+│  AI引擎（5类算法并行）                        │
+│  ├── 数据挖掘：提取能耗模式                   │
+│  ├── 机器学习：回归预测 + 随机森林 + SVM       │
+│  ├── 优化算法：线性规划 + 遗传算法 + 模拟退火   │
+│  ├── 预测性维护：时序分析 + 异常检测           │
+│  └── 深度学习：CNN图像识别 + RNN时序预测       │
+│         ↓                                   │
+│  输出 → 可视化仪表盘 + 自动报警 + 优化建议      │
+└────────────────────────────────────────────┘
+</pre>
+</div>
+
+<h3>1.2 算法层：五大AI引擎</h3>
+<table>
+  <tr><th>引擎</th><th>做什么</th><th>具体算法</th></tr>
+  <tr><td>能耗预测</td><td>用历史数据预测未来24h能耗曲线</td><td>线性回归 · 随机森林 · XGBoost</td></tr>
+  <tr><td>能效优化</td><td>动态调整设备运行参数，最小化单位能耗</td><td>线性/非线性规划 · 遗传算法 · 强化学习</td></tr>
+  <tr><td>异常检测</td><td>实时识别异常能耗模式</td><td>聚类分析 · PCA · 孤立森林</td></tr>
+  <tr><td>预测性维护</td><td>提前预警设备故障，减少非计划停机</td><td>时序分析 · LSTM · 回归模型</td></tr>
+  <tr><td>自适应控制</td><td>动态响应电价波动和负荷变化</td><td>动态规划 · 强化学习 · MPC</td></tr>
+</table>
+
+<h3>1.3 应用层：污水厂完整数据流</h3>
+<div class="box">
+<pre>
+传感器部署（关键设备+管道节点）
+    ↓
+实时数据采集 → 数据清洗（去异常值 · 平滑噪声）
+    ↓
+特征工程（提取设备功率 · 流量变化 · 运行模式）
+    ↓
+模型训练（历史数据训练 → 交叉验证 → 超参调优）
+    ↓
+预测&优化（24h能耗预测 → 设备调度优化）
+    ↓
+实时监控 & 可视化仪表盘
+    ↓
+自动报告 + 异常报警 + 操作建议
+</pre>
+</div>
+
+<!-- 二、基准线算法 -->
+<h2>二、基准线算法 — 这个项目的核心技术壁垒</h2>
+
+<p>EMC模式有一个行业死结：<strong>"省了多少电，由谁说了算？"</strong>甲方说没省，你要吵架。我们的解法是把能耗拆成两块，只对可变部分做文章。</p>
+
+<h3>2.1 能耗拆分模型</h3>
+<div class="box">
+<pre>
+污水厂总能耗 = 固定能耗 + 可变能耗
+
+固定能耗（60-70%）：不管处理多少污水，基础设备必须跑
+  ├── 办公用电 · 照明 · 通风
+  └── 设备待机功耗
+
+可变能耗（30-40%）：跟处理量正相关，AI能优化的部分
+  ├── 水泵（流量×扬程，用电大头）
+  ├── 曝气系统（鼓风机）
+  └── 污泥处理设备
+</pre>
+</div>
+
+<h3>2.2 分段基准线（解决不同处理量下的能耗差异）</h3>
+<p>污水厂处理量不是固定的——雨季和旱季能差3倍。用单一基准线不公平。</p>
+
+<table>
+  <tr><th>处理量区间</th><th>基准线设定</th><th>逻辑</th></tr>
+  <tr><td>&lt; 6万吨/日</td><td>基准线A</td><td>低负荷→设备效率低→单位能耗偏高</td></tr>
+  <tr><td>6-9万吨/日</td><td>基准线B</td><td>中等负荷→设备接近最优效率区间</td></tr>
+  <tr><td>9-12万吨/日</td><td>基准线C</td><td>高负荷→规模效应摊薄固定能耗</td></tr>
+  <tr><td>&gt; 12万吨/日</td><td>基准线D</td><td>满负荷→设备满载运行，效率最高</td></tr>
+</table>
+
+<h3>2.3 基准线计算逻辑</h3>
+<ol>
+  <li><strong>取历史数据</strong>：甲方过去1-2年在各处理量区间的实际单位电耗（kWh/吨）</li>
+  <li><strong>回归拟合</strong>：用线性回归或多项式回归建立"处理量→基准电耗"函数</li>
+  <li><strong>动态调整</strong>：考虑季节因素（水温影响曝气效率）、进水水质波动</li>
+  <li><strong>节能计量</strong>：实际电耗 < 基准线 → 差额 = 节能量 → 按比例分成</li>
+</ol>
+
+<div class="highlight">
+<p><strong>为什么这个算法是壁垒？</strong></p>
+<p>如果基准线设太低，甲方不爽（觉得你偷了他的自然效率提升）。设太高，我们没钱赚。这个"度"是跟甲方来回博弈出来的，不是纯技术问题——是商业判断力。</p>
+</div>
+
+<!-- 三、AI vs 传统设备改造 -->
+<h2>三、核心竞争策略：AI调参数 vs 传统换设备</h2>
+
+<div class="vs-box">
+  <div class="vs-good">
+    <h4>✅ AI节能（我们）</h4>
+    <ul>
+      <li>投入小：一套AI BOX约100万，甲方可零投入（EMC模式）</li>
+      <li>不停产：即装即用，不需要停机改造</li>
+      <li>持续优化：越跑越聪明，节能率随时间提升</li>
+      <li>预测性维护：提前预警故障，减少意外停机</li>
+      <li>强扩展性：可叠加新的优化模块</li>
+      <li>政策背书：国家+地方政策支持AI+产业应用</li>
+    </ul>
+  </div>
+  <div class="vs-bad">
+    <h4>❌ 传统设备改造</h4>
+    <ul>
+      <li>投入大：换泵/换变频器/换管道，一次性投入数百万</li>
+      <li>需停产：施工周期长，影响日常运营</li>
+      <li>一次性：设备换完即固定，无法自适应变化</li>
+      <li>维护成本高：新设备需要专门培训+备件</li>
+      <li>局部优化：只换某个设备，不解决系统级效率</li>
+      <li>资源浪费：旧设备报废产生固废+碳排放</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 四、投标差异化策略 -->
+<h2>四、投标差异化策略（五个维度打竞品）</h2>
+
+<table>
+  <tr><th>维度</th><th>我们的牌</th><th>对手的弱点</th></tr>
+  <tr><td><strong>资金</strong></td><td>100万现金存款证明，展示项目资金实力</td><td>多数ESCO公司轻资产，拿不出资金证明</td></tr>
+  <tr><td><strong>设备</strong></td><td>施耐德品牌背书 + AI算法差异化，"方案+Demo+运营+实施"四件套演示流</td><td>纯设备商只卖硬件，没有算法优化能力</td></tr>
+  <tr><td><strong>节能率</strong></td><td>对标CMAA国际检验标准，用原系统"单位电耗"做动态基准线，可验证可审计</td><td>对手的"节能率"定义模糊，无法量化验证</td></tr>
+  <tr><td><strong>模式</strong></td><td>甲方零投入（EMC），算法节能 > 硬件节能，政策合规（国家级+省级文件三重背书）</td><td>设备商只能卖断，甲方需一次性出资</td></tr>
+  <tr><td><strong>运维</strong></td><td>持证高级工程师+算法专家挂靠，承诺响应时间（电话→到场时限），可驻场</td><td>新公司无业绩记录，甲方担心后续服务</td></tr>
+</table>
+
+<!-- 五、商业模式 -->
+<h2>五、商业模式与法人架构</h2>
+
+<h3>5.1 EMC（合同能源管理）模式</h3>
+<div class="box">
+<pre>
+甲方（污水厂）                  我方（ESCO）
+    │                              │
+    │  零投入，提供场地+数据         │  投AI BOX设备+算法+运维
+    │                              │
+    └──────────┬───────────────────┘
+               │
+               ▼
+       AI BOX部署运行
+       · 实时监控能耗
+       · AI优化设备参数
+       · 预测性维护
+               │
+               ▼
+      每月核算节能量（实际 vs 基准线）
+               │
+       ┌───────┴───────┐
+       │               │
+    省下的电费       未省的部分
+    ├─ 设备回本前：大头还设备方
+    └─ 设备回本后：我方70-80% / 甲方20-30%
+</pre>
+</div>
+
+<h3>5.2 三层法人架构</h3>
+<div class="box">
+<pre>
+母公司（品牌+技术+资金池）
+    │
+    ├── ESCO子公司（合同能源管理业务主体）
+    │     │
+    │     └── 项目公司A（昆明13厂）
+    │     └── 项目公司B（豫光金铅）
+    │     └── 项目公司C（沈阳双汇）
+    │
+    └── 设计逻辑：
+        · 项目公司隔离风险（单个项目出事不影响母公司）
+        · ESCO集中资质+业绩（用于后续招标）
+        · 利润通过服务费/管理费回流母公司
+</pre>
+</div>
+
+<h3>5.3 600万基数利润分成测算</h3>
+<table>
+  <tr><th>场景</th><th>年电费基数</th><th>目标节能率</th><th>年省电费</th><th>我方分成(70%)</th></tr>
+  <tr><td>保守</td><td>600万</td><td>10%</td><td>60万</td><td>42万/年</td></tr>
+  <tr><td>基准</td><td>600万</td><td>15%</td><td>90万</td><td>63万/年</td></tr>
+  <tr><td>乐观</td><td>600万</td><td>25%</td><td>150万</td><td>105万/年</td></tr>
+</table>
+<p style="font-size:0.85em; color: var(--text-tertiary);">* 600万为单厂年电费基数，AI BOX设备成本约100万/套，基准场景下约1.6年回本</p>
+
+<!-- 六、政策东风 -->
+<h2>六、政策东风（投标时用来"镇场子"的文件清单）</h2>
+<ol>
+  <li>国务院《关于积极推进"互联网+"行动的指导意见》— AI+传统产业转型</li>
+  <li>国务院《"十四五"节能减排综合工作方案》— 信息化技术提升能效</li>
+  <li>国家发改委《"十三五"节能环保产业发展规划》— 大数据+AI节能</li>
+  <li>住建部《关于加强智慧水务建设的指导意见》— AI优化水务系统</li>
+  <li>中国制造2025 — 制造业+互联网融合，AI推动智能制造</li>
+  <li>云南省《"十四五"生态环境保护规划》— 信息化+智能化环保</li>
+  <li>云南省《数字经济发展规划(2021-2025)》— 数字化+智能化转型</li>
+  <li>上海市智慧城市建设规划(2021-2025) — 智慧水务+AI</li>
+</ol>
+
+<!-- 七、投标操作流程 -->
+<h2>七、投标操作流程（四步法）</h2>
+<ol>
+  <li><strong>方案确认</strong>：跟甲方业务负责人对齐——服务模式（EMC/BOT/买断）、付款方式、节能目标、技术要求</li>
+  <li><strong>对接招标公司</strong>：甲方指定招标代理，我们对接并摸底招标文件偏好</li>
+  <li><strong>参数影响</strong>：在招标文件编制阶段介入，影响评分办法、资质要求、技术参数——让规则向我们的优势倾斜</li>
+  <li><strong>投标应答</strong>：5-7个工作日内完成标书，核心是"解决方案+Demo演示+运营方案+节能率对赌"</li>
+</ol>
+
+<div class="highlight">
+  <p><strong>一条重要的博弈认知：</strong>核心不是"我们技术多牛"，而是让甲方放心——"这个团队能扛事，中标后不会跑路"。所以资金证明+资质挂靠+过往业绩比算法PPT重要得多。</p>
+</div>
+
+<!-- 八、项目清单 -->
+<h2>八、项目清单</h2>
+<table>
+  <tr><th>项目</th><th>规模</th><th>状态</th></tr>
+  <tr><td>昆明第十三水质净化厂</td><td>约200万预算，邀标</td><td>方案已提交，等待招标流程</td></tr>
+  <tr><td>沈阳双汇食品（HVAC暖通）</td><td>暖通系统AI智控</td><td>完整方案已提交（9.2MB提案）</td></tr>
+  <tr><td>豫光金铅（00068.HK关联）</td><td>工业节能</td><td>合同双签盖章完成</td></tr>
+</table>
+
+<p style="color:#666; font-size:0.9em; margin-top:40px;">搭建时间：2024年3月 | 持续至今</p>
+
+</div>
+</body>
+</html>

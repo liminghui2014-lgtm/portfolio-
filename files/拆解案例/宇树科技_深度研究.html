@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇树科技 · 全球出货量最大的人形机器人硬件公司</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:"neutral"});</script>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #fff; --border: #e8e6e1;
+    --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b;
+    --accent: #2c5f8a; --divider: #efedeb;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 850px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 0.88em; }
+  h1 { font-size: 1.5em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  h2 { font-size: 1.15em; font-weight: 600; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--divider); }
+  h3 { font-size: 1.0em; font-weight: 600; margin: 24px 0 8px; }
+  p { color: var(--text-secondary); font-size: 0.9em; margin-bottom: 8px; }
+  li { color: var(--text-secondary); font-size: 0.88em; margin-bottom: 4px; margin-left: 20px; }
+  .quote { color: var(--text-tertiary); border-left: 2px solid var(--border); padding-left: 14px; font-style: italic; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.84em; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid var(--divider); }
+  th { background: #f5f3f0; color: var(--text); font-weight: 600; font-size: 0.82em; }
+  td { color: var(--text-secondary); }
+  hr { border: none; border-top: 1px solid var(--divider); margin: 28px 0; }
+  .code-block { background: #f5f3f0; border: 1px solid var(--border); border-radius: 6px; padding: 18px; margin: 14px 0; overflow-x: auto; }
+  .code-block pre { font-family: "SF Mono", "Cascadia Code", "Courier New", monospace; font-size: 0.8em; color: var(--text-secondary); white-space: pre-wrap; }
+  .tag { display: inline-block; background: #f3f0ec; color: #7a6e5e; padding: 2px 10px; border-radius: 4px; font-size: 0.78em; margin-bottom: 10px; }
+  .subtitle { color: var(--text-tertiary); font-size: 0.85em; margin-bottom: 4px; }
+  .note-text { color: var(--text-tertiary); font-size: 0.82em; margin-bottom: 20px; }
+  strong { color: var(--text); }
+  code { background: #f0ede8; padding: 1px 5px; border-radius: 3px; font-size: 0.88em; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+<h1>宇树科技 · 全球出货量最大的人形机器人硬件公司</h1>
+<p class="subtitle">SOP Agent Swarm 三阶段拆解 · Gemini 深度研究格式</p>
+<div class="tag">人形机器人 · 硬件</div>
+<div class="note-text">7 模块拆解 · 92 分 · 含单位经济测算 + 补贴分析</div>
+<h1>宇树科技（Unitree）产品深度拆解</h1>
+<p class="quote">信源：宇树官网、公开财报/融资披露、36氪/晚点/机器之心报道、专利数据库(CNIPA)、UpMarket Pre-IPO 数据</p>
+<p class="quote">标注：[已核实] = 多源交叉验证 | [官方宣称] = 宇树自述但未独立验证 | [推测] = 基于公开数据的合理估算</p>
+<hr>
+<h2>1. 一句话定位</h2>
+<p>宇树是全球出货量最大的人形机器人硬件公司。5,500 台年出货 [已核实]、$16K 入门定价 [已核实]、262 项有效专利 [已核实]、自研关节电机 [已核实]。它不是 AI 公司——没有世界模型，没有具身智能基础模型，没有开发者平台。它的竞争力是<strong>硬件工程 + 供应链 + 成本控制</strong>。</p>
+<hr>
+<h2>2. 产品矩阵</h2>
+<table>
+<tr><th>产品</th><th>定位</th><th>定价</th><th>出货量</th><th>核心参数</th></tr>
+<tr><td>**G1**</td><td>轻量级双足人形</td><td>$16,000 [已核实]</td><td>主力出货型号</td><td>身高 1.3m，体重 35kg，续航 2h，23 自由度</td></tr>
+<tr><td>**H1**</td><td>全尺寸双足人形</td><td>预估 $50-90K [推测]</td><td>小批量</td><td>身高 1.8m，体重 47kg，移动速度 3.3m/s [已核实]</td></tr>
+<tr><td>**B2**</td><td>四足机器人（狗）</td><td>$3,000-10,000</td><td>宇树起家产品线</td><td>载荷 20kg+，工业巡检</td></tr>
+<tr><td>**Go2**</td><td>消费级四足</td><td>$1,600</td><td>教育/极客市场</td><td>带 AI 语音交互 [官方宣称]</td></tr>
+</table>
+<p><strong>产品策略</strong>：用四足（成熟品类）养现金流，用人形（新兴品类）占估值叙事。2025 年 5,500 台出货中，四足占比未知 [缺乏公开分品类出货数据]。</p>
+<hr>
+<h2>3. 硬件工程能力</h2>
+<h3>3.1 自研关节电机</h3>
+<p>这是宇树最硬的壁垒。</p>
+<p>人形机器人的核心零部件 = 关节电机（含减速器 + 编码器 + 驱动器）。G1 有 23 个自由度，需要 23 组关节电机。如果外购：</p>
+<li>单个高性能关节电机（如 Harmonic Drive + Maxon 电机组合）≈ $2,000-3,000</li>
+<li>23 个 ≈ $46,000-69,000 —— 仅电机成本就远超 G1 售价</li>
+<p>宇树的自研路径把单个关节成本压到了什么水平？[缺乏公开数据]。但从 G1 整机售价 $16K 反推：</p>
+<li>如果整机 BOM 约 $10-12K [推测]</li>
+<li>23 个自研关节 ≈ $3,000-5,000（总），即单个约 $130-220</li>
+<li>这是外购方案的 1/10 - 1/20</li>
+<p><strong>262 项有效专利 [已核实，CNIPA 2026-01 检索]</strong> 中，约 80 项集中在电机模组领域。这是结构性的成本护城河——竞品要么自研（2-3 年工程积累），要么外购（成本被卡脖子）。</p>
+<h3>3.2 制造能力</h3>
+<li>杭州智能制造基地：投资 6.24 亿元 [已核实]，设计年产能未公开</li>
+<li>2025 年出货 5,500 台 [已核实，UpMarket Pre-IPO 文件]，全球人形机器人出货量第一</li>
+<li>对比：Tesla Optimus 未量产，Figure 02 小批量（<100 台），Boston Dynamics Atlas 极少出货</li>
+<p><strong>关键判断</strong>：5,500 台的"全球第一"在绝对值上并不大（$100M 收入级别），但在人形机器人这个品类里是断层领先——第二名可能连 500 台都没有。</p>
+<hr>
+<h2>4. 商业数据</h2>
+<table>
+<tr><th>指标</th><th>数据</th><th>信源</th></tr>
+<tr><td>2025 年出货量</td><td>5,500 台</td><td>UpMarket Pre-IPO [已核实]</td></tr>
+<tr><td>G1 定价</td><td>$16,000</td><td>官网 [已核实]</td></tr>
+<tr><td>有效专利</td><td>262 项（含 20+ 国际发明专利）</td><td>CNIPA [已核实]</td></tr>
+<tr><td>杭州工厂投资</td><td>6.24 亿元</td><td>官方公告 [已核实]</td></tr>
+<tr><td>估值（2024）</td><td>~31 亿美元</td><td>融资披露 [已核实]</td></tr>
+<tr><td>估值（2025）</td><td>~127 亿美元</td><td>Pre-IPO 轮 [已核实]</td></tr>
+<tr><td>IPO 目标估值</td><td>~500 亿美元</td><td>媒体报道 [官方宣称，未经独立验证]</td></tr>
+<tr><td>收入</td><td>未公开</td><td>[缺乏权威公开数据]</td></tr>
+<tr><td>毛利率</td><td>未公开</td><td>[缺乏权威公开数据]</td></tr>
+<tr><td>UnifoLM 模型</td><td>官网提及但无 benchmark/demo/论文</td><td>[官方宣称，外部无法验证]</td></tr>
+</table>
+<p><strong>估值逻辑</strong>：500 亿美元 IPO 目标对应约 50x 远期 P/S（假设收入 ~$100M）。作为对比：大疆 2024 年估值约 $20B，收入 ~$5B（约 4x P/S）。宇树的估值叙事中包含了大疆不具备的"具身智能平台"溢价——<strong>但如果 AI 部分（UnifoLM）无法被外部验证，这个溢价在 IPO 定价时会被投资人砍掉。</strong></p>
+<hr>
+<h2>5. 竞争对比</h2>
+<h3>5.1 直接竞争：中国市场人形机器人</h3>
+<table>
+<tr><th>公司</th><th>出货量</th><th>融资阶段</th><th>硬件特色</th><th>AI 能力</th></tr>
+<tr><td>**宇树**</td><td>5,500 台 [已核实]</td><td>Pre-IPO</td><td>自研电机、双足/四足/轮式</td><td>UnifoLM [官方宣称，未验证]</td></tr>
+<tr><td>它石智航</td><td><100 台 [推测]</td><td>A 轮</td><td>自动驾驶技术迁移、双足</td><td>端到端 AI（从自动驾驶迁移）</td></tr>
+<tr><td>极佳视界</td><td>原型阶段</td><td>A 轮</td><td>世界模型驱动</td><td>自研世界模型 [学术论文支撑]</td></tr>
+<tr><td>智元机器人</td><td>数百台 [推测]</td><td>B 轮</td><td>灵巧手 + 操作</td><td>与 OpenAI 风格接近 [官方宣称]</td></tr>
+</table>
+<p><strong>核心差距</strong>：宇树领先 2-3 年。其他三家还在原型/小批量阶段，宇树已经跑通了"量产→出货→回款→投工厂"的正循环。</p>
+<h3>5.2 全球参照</h3>
+<table>
+<tr><th>维度</th><th>宇树</th><th>Tesla Optimus</th><th>Figure 02</th><th>Boston Dynamics</th></tr>
+<tr><td>状态</td><td>量产</td><td>内部测试</td><td>小批量</td><td>极少出货</td></tr>
+<tr><td>定价</td><td>$16K</td><td>未公布</td><td>未知</td><td>$75K+</td></tr>
+<tr><td>AI 能力</td><td>未验证</td><td>FSD + Dojo</td><td>VLA + OpenAI</td><td>与 OpenAI/Google 合作</td></tr>
+<tr><td>制造</td><td>杭州工厂</td><td>特斯拉工厂</td><td>自建</td><td>实验室级</td></tr>
+</table>
+<p><strong>关键判断</strong>：宇树在"把机器人做出来、做便宜、做出量"上领先全球。但在"让机器人变聪明"上，它没有证明任何能力。这是两个完全不同的竞争维度——如果具身智能的核心瓶颈从"硬件"转向"AI"，宇树的领先优势会迅速收窄。</p>
+<hr>
+<h2>6. 护城河评估</h2>
+<table>
+<tr><th>壁垒</th><th>强度</th><th>可持续性</th><th>破防条件</th></tr>
+<tr><td>**自研关节电机**</td><td>⭐⭐⭐⭐</td><td>2-3 年先发</td><td>竞品自研突破 / 上游供应商推出平价高性能关节模组</td></tr>
+<tr><td>**量产能力**</td><td>⭐⭐⭐⭐</td><td>2-3 年先发</td><td>大厂（富士康/立讯）入场 ODM / Tesla 上海工厂启动机器人产线</td></tr>
+<tr><td>**262 项专利**</td><td>⭐⭐⭐</td><td>防御性</td><td>专利诉讼无法阻止竞品绕道自研</td></tr>
+<tr><td>**政策红利**</td><td>⭐⭐⭐</td><td>2-3 年窗口</td><td>竞品也达到量产 → 政策资源被摊薄</td></tr>
+<tr><td>**AI 能力**</td><td>⭐</td><td>无</td><td>**不存在**——UnifoLM 未被外部验证，AI 不是宇树的护城河</td></tr>
+<tr><td>**开发者生态**</td><td>⭐</td><td>无</td><td>**不存在**——有基础 SDK 但不是平台。宇树是硬件公司，不是软件生态公司</td></tr>
+</table>
+<p><strong>诚实结论</strong>：宇树的护城河全部在硬件侧。在 AI 侧没有护城河，甚至没有入场券。当前估值（127 亿 → 500 亿目标）中的"具身智能平台"溢价来自市场对宇树会补上 AI 短板的期待，而非已验证的能力。</p>
+<hr>
+<h2>7. 风险</h2>
+<li>**AI 空心化**：宇树没有世界模型、没有具身智能大模型、没有 AI 人才储备的公开证据。如果人形机器人的竞争从"谁能做出来"进入"谁能让它变聪明"，宇树的硬件优势不构成护城河。</li>
+<li>**估值与基本面脱节**：500 亿美元 IPO 目标是 Tesla Optimus 的叙事级别，但宇树没有 Tesla 的 AI 能力（FSD/Dojo）。如果 IPO 前无法证明 UnifoLM 的真实性，定价会被大幅下调。</li>
+<li>**竞品量产追赶**：它石/极佳/智元目前都在原型阶段，但如果任何一家在 2026-2027 年跑通量产，宇树的"唯一可选供应商"地位会动摇。</li>
+<li>**芯片供应链**：关节电机自研解决了执行器，但控制器芯片（NVIDIA Jetson / 高通）仍依赖进口。地缘风险不解除，产能上限被芯片掐住。</li>
+<hr>
+<h2>8. 一句话判断</h2>
+<p><strong>宇树是全球最优秀的人形机器人硬件公司——把机器人做出来、做便宜、做出量，这三件事它做到了全球第一。但它现在穿的"具身智能"估值的衣服太大了——500 亿美元赌的不是卖 5,500 台机器人的生意，而是"未来 10 年所有人形机器人的标准硬件平台"。这个叙事在硬件侧成立，在 AI 侧目前为零。如果 UnifoLM 跑不出来，它就是一家优秀的制造业公司，值 5-8x P/S，约 $10-20B——不是 $50B。</strong></p>
+<hr>
+<p><em>报告日期：2026-05-11 | 所有标注 [推测] 的数据为基于公开信息合理估算，不可作为投资决策依据</em></p>
+</div>
+</body>
+</html>

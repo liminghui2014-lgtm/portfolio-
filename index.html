@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minghui Li</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --card: #fff;
+    --border: #e8e6e1;
+    --text: #1a1a1a;
+    --text-secondary: #6b6b6b;
+    --text-tertiary: #9b9b9b;
+    --accent: #2c5f8a;
+    --accent-light: #e8f0f7;
+    --tag-bg: #f3f0ec;
+    --tag-text: #7a6e5e;
+    --divider: #efedeb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 80px 24px 120px; }
+
+  /* Header */
+  .header { margin-bottom: 64px; }
+  .header h1 { font-size: 2em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .header .role { font-size: 1em; color: var(--text-secondary); line-height: 1.5; max-width: 480px; }
+
+  /* Section */
+  .section { margin-bottom: 72px; }
+  .section-title { font-size: 0.78em; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+
+  /* Project / Commercial Cards */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 28px; margin-bottom: 12px; box-shadow: var(--shadow); transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-hover); border-color: #d8d4cc; }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .card h3 { font-size: 1.08em; font-weight: 600; letter-spacing: -0.01em; }
+  .card .badge { font-size: 0.72em; color: var(--tag-text); background: var(--tag-bg); padding: 3px 10px; border-radius: 4px; white-space: nowrap; font-weight: 500; }
+  .card .summary { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5; }
+  .card ul { padding-left: 18px; }
+  .card li { font-size: 0.86em; color: var(--text-secondary); margin-bottom: 4px; line-height: 1.5; }
+  .card .links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .card .links a { font-size: 0.82em; color: var(--accent); text-decoration: none; padding: 5px 12px; border-radius: 5px; background: var(--accent-light); transition: background 0.15s; }
+  .card .links a:hover { background: #d8e6f4; }
+
+  /* Report Grid */
+  .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 600px) { .report-grid { grid-template-columns: 1fr; } }
+  .report-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 18px; text-decoration: none; box-shadow: var(--shadow); transition: all 0.2s; display: block; }
+  .report-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); }
+  .report-card .track { color: var(--accent); font-size: 0.72em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+  .report-card h4 { color: var(--text); font-size: 0.9em; font-weight: 600; margin-bottom: 4px; }
+  .report-card .note { color: var(--text-tertiary); font-size: 0.78em; }
+
+  /* Skills Table */
+  .skill-table { width: 100%; border-collapse: collapse; }
+  .skill-table td { padding: 8px 0; font-size: 0.86em; border-bottom: 1px solid var(--divider); }
+  .skill-table td:first-child { color: var(--accent); font-weight: 600; width: 110px; font-size: 0.8em; vertical-align: top; padding-right: 16px; }
+  .skill-table td:last-child { color: var(--text-secondary); }
+
+  /* Footer */
+  .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--divider); }
+  .footer p { font-size: 0.82em; color: var(--text-tertiary); }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* Honest note */
+  .honest { color: var(--text-tertiary); font-size: 0.8em; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+    <h1 style="margin-bottom:0;">李明辉</h1>
+    <a href="files/简历.html" target="_blank" style="font-size:0.82em;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:3px 12px;border-radius:4px;">简历</a>
+  </div>
+  <p class="role">AI Agent 搭建者，一级市场投研训练中，经历过三次从零到一的商业落地。对一切未知保持好奇。</p>
+</div>
+
+<!-- 一、作品项目 -->
+<div class="section">
+  <div class="section-title">作品项目</div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>天纪 AI · 紫微斗数智能解读</h3>
+      <span class="badge">已上线</span>
+    </div>
+    <p class="summary">从 0 到 1 的 AI 产品。含排盘引擎、RAG 检索、付费策略。</p>
+    <ul>
+      <li>iztro 排盘 (Node.js) + DeepSeek V4 + 87万字倪海夏天纪 RAG + Streamlit</li>
+      <li>40+ 格局自动检测，产品策略文档完整（定价、裂变、数据资产战略）</li>
+      <li>MVP 已上线 Streamlit Cloud，待商业化闭环</li>
+    </ul>
+    <div class="links">
+      <a href="https://tianji-ai-bhakafevsrjhbaqvusnvzu.streamlit.app" target="_blank">Live Demo</a>
+      <a href="https://github.com/liminghui2014-lgtm/tianji-ai" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>嘟嘟 Agent 2.0 · L1/L2 分层调度情报系统</h3>
+      <span class="badge">核心项目</span>
+    </div>
+    <p class="summary">Coze 多 Agent 协同。L1 总控调度 + L2 三路采集工作流 + VOL1 搜索策略引擎 + APE 独立审计。</p>
+    <ul>
+      <li>L1 总控：静默分级 (S/A/B) → 5 模块研报强制渲染（含 Why Now 博弈分析 + 风险标定）</li>
+      <li>L2 工作流：三路并行采集 → 夹逼管道（代码→LLM→代码）→ 100% 结构化 JSON</li>
+      <li>VOL1 策略引擎：6 维搜索矩阵 × 3 层语义去重 × 配额动态分配</li>
+      <li>APE 审计：Gemini 3.1 Pro 独立评估，策略从 v2.1 (82分) 迭代至 v3.0 (90分)</li>
+    </ul>
+    <div class="links">
+      <a href="files/嘟嘟Agent案例研究.html" target="_blank">详细案例研究</a>
+      <a href="https://github.com/liminghui2014-lgtm/coze-vc-workflow" target="_blank">L2 工作流 GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>Deep VC Research · Claude Code 投研插件</h3>
+      <span class="badge">开源</span>
+    </div>
+    <p class="summary">8 步标准化 VC 投研流程，Claude Code 可导入 Skill。反幻觉协议 + 分层信源 + 自动导出 Word 研报。MIT 协议。</p>
+    <ul>
+      <li>商业细节穿透 → 技术底色分析 → 产业链定位 → VC 逆向工程 → 三档估值 → 投资判断</li>
+      <li>跨平台 (Win/Mac/Linux)，一行 pip install 即可用</li>
+      <li>含完整样板研报：自然意志 (Natural Will) AI 推理 Agent 深度分析</li>
+    </ul>
+    <div class="links">
+      <a href="https://github.com/liminghui2014-lgtm/deep-vc-research" target="_blank">GitHub</a>
+      <a href="files/拆解案例/自然意志_深度研究.html" target="_blank">样板研报</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>Coze VC Pipeline · 一级市场情报自动化工作流</h3>
+      <span class="badge">Coze 可导入</span>
+    </div>
+    <p class="summary">三路并行采集 + 夹逼管道架构。"代码(确定性) → LLM(非确定性) → 代码(确定性)"，幻觉出不了管道。</p>
+    <ul>
+      <li>36氪 / 通用搜索 / IT桔子 三路并行，段落级智能截断替代硬截断</li>
+      <li>DeepSeek-V3.2 JSON 提取引擎，模糊金额原样保留，三级置信度 (High/Medium/Low)</li>
+      <li>直接导入 Coze 使用，含完整 README 和配置说明</li>
+    </ul>
+    <div class="links">
+      <a href="https://github.com/liminghui2014-lgtm/coze-vc-workflow" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>IT桔子 VIP 日报 · 一级市场每日全景</h3>
+      <span class="badge">工具链</span>
+    </div>
+    <p class="summary">绕反爬的 VIP 数据自动抓取 + Jarvis 风格可视化面板。</p>
+    <ul>
+      <li>Python + Playwright CDP + Chrome 保活 + PDF 生成</li>
+      <li>三阶段自动日报：市场全景 → VC 追踪 → 公司深度</li>
+    </ul>
+    <div class="links">
+      <a href="files/IT桔子日报.html" target="_blank">详细方案</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>Claude Code GUI · 本地桌面客户端</h3>
+      <span class="badge">全栈</span>
+    </div>
+    <p class="summary">React + FastAPI 全栈项目，SSE 流式输出。</p>
+    <ul>
+      <li>React + TypeScript + Vite 前端 + FastAPI + SQLite 后端</li>
+      <li>多对话管理、SSE 流式输出、子进程通信</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>SOP Agent Swarm · 三阶段产品拆解系统</h3>
+      <span class="badge">Agent 架构</span>
+    </div>
+    <p class="summary">本地 Agent Swarm 架构。3 Agent 协同（Searcher → Generator → Red Teamer → Architect）+ 反幻觉协议 + 信源锚定 + LaTeX/Mermaid 强制输出。已产 DeepSeek V4、宇树两篇 90+ 分拆解。</p>
+    <ul>
+      <li>阶段 0：联网搜索锚定事实边界（严禁后续阶段超界）</li>
+      <li>阶段 1：Generator — 7 模块初稿（定位→画像→功能→模式→竞品→护城河→判断）</li>
+      <li>阶段 2：Red Teamer — 事实核查 + 幻觉捕获 + 逻辑证伪（护城河可写"暂无"，不捏造）</li>
+      <li>阶段 3：Architect — 吸收审计意见重构终稿，强制 LaTeX + Mermaid + 信源标注</li>
+    </ul>
+    <div class="links">
+      <a href="files/SOP_Agent_Swarm_设计文档.md" target="_blank">设计文档</a>
+      <a href="files/audit_sop.md" target="_blank">SOP 协议</a>
+    </div>
+  </div>
+</div>
+
+<!-- 二、商业项目经历 -->
+<div class="section">
+  <div class="section-title">商业经历</div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>AI 节能项目 · 施耐德 AI BOX 合同能源管理</h3>
+      <span class="badge">2024.3&ndash;至今</span>
+    </div>
+    <p class="summary">角色：项目操盘手 &amp; 联合创始人。EMC 模式（投 AI 设备 + 算法，帮污水厂省电，省下的钱分成），甲方零投入。</p>
+    <ul>
+      <li>设计了分段式基准线能耗模型：固定能耗 (60&ndash;70%) + 可变能耗 (30&ndash;40%)，解决了 EMC 行业"省了多少电谁说了算"的核心争议</li>
+      <li>搭建母公司 &rarr; ESCO 子公司 &rarr; 项目公司三层法人架构，编写股权代持合同和利润回流方案</li>
+      <li>昆明第十三水质净化厂 (200 万邀标)、沈阳双汇 (暖通 AI 智控)、豫光金铅 (合同双签)</li>
+      <li>竞标策略：从资金 / 设备 / 节能率 / 模式 / 运维五个维度建竞争壁垒</li>
+    </ul>
+    <div class="links">
+      <a href="files/AI节能项目详情.html" target="_blank">完整方案（基准线算法 &middot; AI 架构 &middot; 竞标策略 &middot; 分成模型）</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>医疗废物就地化处置 · 无废城市政策窗口</h3>
+      <span class="badge">2024.5&ndash;2025.10</span>
+    </div>
+    <p class="summary">角色：商务负责人 &amp; 战略顾问。在医院内用微波 / 摩擦热设备当场消灭医废，解决运输泄漏风险，降低 70&ndash;90% 处置成本。</p>
+    <ul>
+      <li>与设备方 (康先达 / 微盾) 谈成合作框架 + 区域独家保护条款</li>
+      <li>首单试点：呈贡区人民医院，编写完整医院端推动流程（环评 &rarr; 内部报批 &rarr; 环保局 &rarr; 安装 &rarr; 运营）</li>
+      <li>深度绑定"无废城市"国策，编写 8 维度全量化甲方优势分析报告</li>
+      <li class="honest">项目后期因合伙人分歧终止。从中学到：合伙协议中的控制权条款重要性远超商业模型本身</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 三、个人IP -->
+<div class="section">
+  <div class="section-title">个人 IP</div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>明辉来了 · 投资视角拆解科技</h3>
+      <span class="badge">抖音</span>
+    </div>
+    <p class="summary">17 篇深度文案，覆盖 AI / Web3 / 投资哲学 / 科技商业。不讲新闻，讲底层逻辑。</p>
+    <ul>
+      <li>选题覆盖：AI Agent 反思 / 贝叶斯思维 / SpaceX / 稳定币 / 反脆弱 / Dalio / 段永平 / Sam Altman / 面壁智能 / CS 博弈</li>
+    </ul>
+    <div class="links">
+      <a href="https://www.douyin.com/user/MS4wLjABAAAACPfIQA4zgNJFkS2l5dEBqL7uDPUnpKeZxMGto-SBuXcFmC6OuBGg-caGQGzm4muf?from_tab_name=main" target="_blank">抖音主页</a>
+      <a href="files/明辉来了_全部文稿.html" target="_blank">17 篇原文汇总</a>
+    </div>
+  </div>
+</div>
+
+<!-- 四、深度研报 -->
+<div class="section">
+  <div class="section-title">深度研报</div>
+  <p style="color:var(--text-tertiary);font-size:0.84em;margin-bottom:18px;">以下研报分两类：SOP 产品拆解（7 模块结构化 + 反幻觉审计 + LaTeX + Mermaid）和 Gemini 赛道研报（业务全景 &rarr; 产品拆解 &rarr; 市场定位 &rarr; 护城河 &rarr; 风险判断 &rarr; 投资结论）。</p>
+
+  <!-- SOP拆解 -->
+  <div style="margin-bottom:20px;">
+    <p style="font-size:0.8em;font-weight:600;color:var(--text-tertiary);margin-bottom:8px;letter-spacing:0.04em;">SOP 产品拆解案例</p>
+    <div class="report-grid">
+      <a href="files/拆解案例/DeepSeek V4_深度研究.html" target="_blank" class="report-card">
+        <div class="track">LLM · 开源旗舰</div>
+        <h4>DeepSeek V4 · 全球性价比断层领先的 MoE 大模型</h4>
+        <div class="note">7 模块 · 93 分 · Mermaid 流程图 + LaTeX 公式</div>
+      </a>
+      <a href="files/拆解案例/宇树科技_深度研究.html" target="_blank" class="report-card">
+        <div class="track">人形机器人 · 硬件</div>
+        <h4>宇树科技 · 全球出货量最大的人形机器人硬件公司</h4>
+        <div class="note">7 模块 · 92 分 · 单位经济测算 + 补贴分析</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Gemini研报 -->
+  <p style="font-size:0.8em;font-weight:600;color:var(--text-tertiary);margin-bottom:8px;letter-spacing:0.04em;">Gemini 穿透式赛道研报</p>
+
+  <div class="report-grid">
+
+    <a href="files/研报_xw_xinke.html" target="_blank" class="report-card">
+      <div class="track">AI 芯片 / 国产 GPU</div>
+      <h4>曦望芯科 · AI 推理芯片的架构重构与资本逻辑</h4>
+      <div class="note">1.8 万字 · 中国 GPU 国产化深度扫描 · ★★★★★</div>
+    </a>
+
+    <a href="files/研报_yuezhianmian.html" target="_blank" class="report-card">
+      <div class="track">LLM 应用层</div>
+      <h4>月之暗面 · 从长文本到超级应用的 AGI 进化</h4>
+      <div class="note">1.1 万字 · Kimi 2.5 + 估值映射模型 · ★★★★★</div>
+    </a>
+
+    <a href="files/研报_qunhekeji.html" target="_blank" class="report-card">
+      <div class="track">空间智能 / 港股 IPO</div>
+      <h4>群核科技 · 3D 空间智能基础设施 IPO 全景</h4>
+      <div class="note">1.2 万字 · 港股上市 + Freemium 漏斗 · ★★★★★</div>
+    </a>
+
+    <a href="files/研报_zhipu.html" target="_blank" class="report-card">
+      <div class="track">AI 基础设施 / 港股</div>
+      <h4>智谱 AI · Agentic Engineering 范式的价值重估</h4>
+      <div class="note">1.4 万字 · MoE 架构 + GLM-5 全栈 · ★★★★</div>
+    </a>
+
+    <a href="files/研报_yushu.html" target="_blank" class="report-card">
+      <div class="track">人形机器人</div>
+      <h4>宇树科技 · 机器人时代的硬件主权与数据主权</h4>
+      <div class="note">0.6 万字 · 262 项专利 + IPO 估值 · ★★★★</div>
+    </a>
+
+    <a href="files/研报_meshy.html" target="_blank" class="report-card">
+      <div class="track">3D AIGC</div>
+      <h4>Meshy.AI · 3D 生成式 AI 的工业化闭环</h4>
+      <div class="note">1.3 万字 · Meshy-6 架构 + 游戏/电商场景 · ★★★★</div>
+    </a>
+
+    <a href="files/研报_ziranyizhi.html" target="_blank" class="report-card">
+      <div class="track">AI Agent / 推理</div>
+      <h4>自然意志 · 推理型 Agent 的企业级转型</h4>
+      <div class="note">1.6 万字 · AI for Science + 协作网络 · ★★★★</div>
+    </a>
+
+    <a href="files/研报_jijiashijie.html" target="_blank" class="report-card">
+      <div class="track">世界模型 / 具身智能</div>
+      <h4>极佳视界 · 世界模型驱动的具身智能范式</h4>
+      <div class="note">0.9 万字 · 清华系 + 数据合成引擎 · ★★★</div>
+    </a>
+
+    <a href="files/研报_mianbi.html" target="_blank" class="report-card">
+      <div class="track">端侧 AI</div>
+      <h4>面壁智能 · 高效计算范式的破局者</h4>
+      <div class="note">0.7 万字 · MiniCPM 系列 + 端侧部署 · ★★★</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- 五、教育背景 -->
+<div class="section">
+  <div class="section-title">教育背景</div>
+
+  <div class="card">
+    <div class="card-top">
+      <h3>Northeastern University · Master of Analytics</h3>
+      <span class="badge">2019&ndash;2021</span>
+    </div>
+    <p class="summary">10 门课程 + Capstone。涵盖 Python / R / SQL / Tableau / Machine Learning / Azure。</p>
+    <ul>
+      <li>Airbnb NYC 房价预测 — 线性回归 + 假设检验 + 正则化 + 数据挖掘，四种方法交叉验证</li>
+      <li>XN Project 广告数据分析 — Facebook 广告 EDA + Tableau 可视化 + 预测模型 (ViacomCBS 赞助)</li>
+      <li>新产品上市风险分析 — SWOT + KRI + Bass 扩散模型，完整商业风险评估</li>
+      <li>edX 数据库设计与 SQL 查询 — ER 图 &rarr; 规范化 &rarr; 复杂查询，完整数据库项目</li>
+      <li>Capstone：2018 年热门歌曲预测 — Spotify 音频特征 + 回归建模</li>
+    </ul>
+    <div class="links">
+      <a href="files/硕士_airbnb.html" target="_blank">Airbnb 房价预测</a>
+      <a href="files/硕士_xn_project.html" target="_blank">XN 广告分析</a>
+      <a href="files/硕士_risk_mgmt.html" target="_blank">风险分析</a>
+      <a href="files/硕士_sql_project.html" target="_blank">SQL 项目</a>
+      <a href="files/硕士学习汇总.html" target="_blank">完整课程清单</a>
+    </div>
+  </div>
+</div>
+
+<!-- 六、技能 -->
+<div class="section">
+  <div class="section-title">技能</div>
+  <table class="skill-table">
+    <tr><td>AI 工具链</td><td>Coze Agent Swarm, Claude Code, Cursor, Gemini 3.1 Pro</td></tr>
+    <tr><td>技术栈</td><td>Python, JavaScript, Streamlit, FastAPI, React, SQLite, SQL</td></tr>
+    <tr><td>数据分析</td><td>pandas / scikit-learn / R / Tableau, 回归建模, 决策树, 时间序列, EDA</td></tr>
+    <tr><td>投资分析</td><td>VC Method, DCF, P/S 锚定, Term Sheet, 尽调框架, 赛道 Mapping</td></tr>
+    <tr><td>商业落地</td><td>政企沟通, 投标策略, 团队搭建, 股权架构, 合作伙伴谈判</td></tr>
+    <tr><td>语言</td><td>全英文工作 (12 年海外教育, 本硕全英文授课)</td></tr>
+  </table>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p><a href="https://github.com/liminghui2014-lgtm">GitHub</a> &middot; yeezus2049@163.com</p>
+</div>
+
+</div>
+</body>
+</html>

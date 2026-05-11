@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>硕士学习汇总 — Northeastern University</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 40px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8em; color: var(--text); }
+  .subtitle { color: var(--text-tertiary); margin-bottom: 36px; }
+  h2 { color: var(--text); font-size: 1.2em; border-bottom: 1px solid var(--divider); padding-bottom: 8px; margin: 32px 0 14px; }
+  h3 { color: var(--text); font-size: 1em; margin: 16px 0 6px; }
+  p, li { color: var(--text-secondary); font-size: 0.92em; }
+  ul { padding-left: 20px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88em; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--divider); }
+  th { color: var(--text-tertiary); font-size: 0.82em; }
+  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 600px) { .course-grid { grid-template-columns: 1fr; } }
+  .course { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 12px; }
+  .course .code { color: var(--accent); font-size: 0.78em; font-weight: 700; }
+  .course .name { color: var(--text); font-size: 0.88em; margin: 2px 0; }
+  .course .tools { color: #777; font-size: 0.78em; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>硕士两年学习汇总</h1>
+<p class="subtitle">Northeastern University · Master of Professional Studies in Analytics · 2019–2021</p>
+
+<h2>10门课 + Capstone</h2>
+
+<div class="course-grid">
+  <div class="course"><div class="code">ALY 6010</div><div class="name">概率与统计 + R语言入门</div><div class="tools">R, 描述统计, 假设检验</div></div>
+  <div class="course"><div class="code">ALY 6030</div><div class="name">数据库管理系统</div><div class="tools">SQL, ER图, 数据仓库(Kimball)</div></div>
+  <div class="course"><div class="code">ALY 6040</div><div class="name">数据分析导论</div><div class="tools">Python, pandas, COVID-19分析</div></div>
+  <div class="course"><div class="code">ALY 6050</div><div class="name">中级分析</div><div class="tools">R, Excel高级建模, 回归, 蒙特卡洛</div></div>
+  <div class="course"><div class="code">ALY 6070</div><div class="name">数据可视化</div><div class="tools">Tableau, D100销售仪表盘(1.25亿行)</div></div>
+  <div class="course"><div class="code">ALY 6080</div><div class="name">机器学习</div><div class="tools">决策树, 随机森林, EDA, 特征工程</div></div>
+  <div class="course"><div class="code">ALY 6110</div><div class="name">大数据管理</div><div class="tools">Azure认证, Hadoop概念, 大数据伦理</div></div>
+  <div class="course"><div class="code">ALY 6120</div><div class="name">商业分析</div><div class="tools">SWOT, 波特五力, R商业分析</div></div>
+  <div class="course"><div class="code">ALY 6130</div><div class="name">风险管理分析</div><div class="tools">COSO框架, Bass模型, KRI设计</div></div>
+  <div class="course"><div class="code">ALY 6980</div><div class="name">Capstone — 2018热门歌曲预测</div><div class="tools">Python, EDA, 回归建模, Spotify数据</div></div>
+</div>
+
+<h2>Capstone 详解</h2>
+<p><strong>问题</strong>：什么样的歌能火？用数据回答，而不是靠感觉。</p>
+<p><strong>数据</strong>：Spotify 2018 Top 100 歌曲音频特征（tempo, danceability, energy, valence, acousticness 等）</p>
+<p><strong>方法</strong>：Python EDA → 相关性矩阵 → 多元回归</p>
+<ul>
+  <li>高 Tempo（>60 BPM）与流行度正相关——"节奏越快越容易火"</li>
+  <li>Danceability 分布高度集中——"能让人动起来的歌"是流行前提</li>
+  <li>模型局限性：仅靠音频特征 R² 不高——歌词、艺人知名度、营销投入才是决定性变量</li>
+</ul>
+<p><strong>意义</strong>：这个项目不是追求模型精度，而是展示"怎么用数据回答一个没有标准答案的问题"的完整思维链。</p>
+
+<h2>Tableau 代表作</h2>
+<p><strong>D100 公司全年销售可视化</strong>：1.25 亿行交易数据 → 交互式仪表盘。包含地理分布热力图、时间序列趋势、产品分类对比、客户细分。使用 Tableau 打包工作簿（.twbx）交付。</p>
+
+<h2>技能矩阵</h2>
+<table>
+  <tr><td style="color: var(--accent); width:100px;">语言</td><td>Python (pandas/numpy/sklearn), R, SQL</td></tr>
+  <tr><td style="color: var(--accent);">工具</td><td>Jupyter, Tableau, Excel高级建模, RStudio, Azure</td></tr>
+  <tr><td style="color: var(--accent);">统计</td><td>描述统计, 推断统计, 回归, 蒙特卡洛, 时间序列</td></tr>
+  <tr><td style="color: var(--accent);">ML</td><td>决策树, 随机森林, 聚类, PCA, 特征工程, 模型评估</td></tr>
+  <tr><td style="color: var(--accent);">数据工程</td><td>SQL, 数据仓库(Kimball), ETL概念, 大数据架构</td></tr>
+  <tr><td style="color: var(--accent);">商业应用</td><td>SWOT, KRI, Bass扩散模型, 风险分析, 决策建模</td></tr>
+  <tr><td style="color: var(--accent);">认证</td><td>Microsoft Azure Administration</td></tr>
+</table>
+
+</div>
+</body>
+</html>

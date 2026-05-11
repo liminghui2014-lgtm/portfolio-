@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edX 在线教育平台 — 数据库设计与SQL查询</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 40px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8em; color: var(--text); margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); margin-bottom: 36px; }
+  .content { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+  .content p { margin-bottom: 14px; color: var(--text-secondary); font-size: 0.92em; }
+  .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+  .tag { display: inline-block; background: var(--accent-light); color: var(--accent); padding: 2px 10px; border-radius: 4px; font-size: 0.8em; margin-bottom: 6px; }
+  .desc { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 20px; border-left: 2px solid var(--border); padding-left: 14px; }
+  .summary-cn { background: #f5f3f0; border: 1px solid #1e3a3a; border-radius: 6px; padding: 16px; margin-bottom: 20px; }
+  .summary-cn h4 { color: var(--accent); font-size: 0.85em; margin-bottom: 8px; }
+  .summary-cn p { color: #a0b8c0; font-size: 0.84em; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>edX 在线教育平台 — 数据库设计与SQL查询</h1>
+<p class="subtitle">ALY 6030 · 个人项目</p>
+
+<div class="tag">ALY 6030</div>
+<div class="desc">为 edX 在线课程平台设计规范化数据库模型（ER图 → 建表 → 查询优化），编写复杂 SQL 查询回答业务问题：用户行为分析、课程完成率、人口统计分布。</div>
+
+<div class="summary-cn">
+<h4>中文摘要</h4>
+<p><strong>使用工具</strong>：MySQL Workbench / SQL</p>
+<p><strong>分析方法</strong>：数据库规范化设计（1NF→2NF→3NF）、ER 图、复杂 SQL 查询（JOIN、子查询、聚合函数、HAVING）</p>
+<p><strong>分析对象</strong>：edX 在线教育平台的用户选课数据集（含用户信息、课程信息、成绩记录、证书状态等多表关联数据）</p>
+<p><strong>核心问题</strong>：如何将原始的"扁平表"规范化到第三范式（3NF）？如何用 SQL 回答业务问题——哪些课程完成率最高？不同学历背景的用户选课偏好有何差异？证书获取率与课程类型是否相关？</p>
+<p><strong>结论要点</strong>：成功将原始 14 列扁平表拆分为 3 张规范化表（users, courses, enrollments），消除了数据冗余。通过 6 组 SQL 查询回答了课程完成率排名、用户行为分析、人口统计分布等业务问题。掌握了 JOIN 多表关联、子查询嵌套、GROUP BY + HAVING 的实战应用。</p>
+</div>
+
+<div class="content">
+<p>MySQL – Project 3</p><p>Northeastern University – ALY 6030</p><p>edX Database </p><p>Full Name _______________Minghui Li____________________</p><p>Date: ___________________2020/6/21_________________</p><p>Overview</p><p>In this project, you will query your database from project 2 to learn about the dataset. More specifically, you will do the following:</p><p>Create a database in your Workbench and name it “edX”, with a table for importing data.</p><p>Import the provided data () into your table. </p><p>Create an appropriate number of tables and populate them with data.</p><p>Write appropriate queries to answer each question asked. </p><p>Save all your work in parts (i)-(iii) above *save query in Workbench) in a “EdX_Your last name_Your first initial.sql” file format and submit it along with this word document (as two separate attachments).</p><p>Recall, this database contains information about users who took courses taught on the edX platform.</p><p>Recall the attribute definitions:</p><p>Now that our database is set up, let's start to ask some questions about our data! From now on we can use the three tables in our data model rather than going back to the original "flat table." If we wanted to, we could even drop that table from our database.</p><p>For each question, </p><p>Enter your respective MySQL queries needed to obtain the required answer. </p><p>If the output of the query in (i) is a single numerical value (e.g., average, sum, …), enter it with your answer in the space provided. If the ourput is a table, insert a picture of the upper few rows of the table in the space provided.</p><p>Part 1: An exploration of 6.00x</p><p>How many enrollees are in the class with course_id MITx/6.00x/2012_Fall? </p><p>Assumed enrolled is the same as "registered."</p><p>(output):</p><p>That same course was also taught again the following term with course_id "MITx/6.00x/2013_Spring". Did enrollment go up or down?</p><p>(output):</p><p>The enrollment went down the next term.</p><p>What was the average grade in each term of 6.00x?</p><p>(output):</p><p>Uh, those seem too low. Remove all of the zeroes for people who haven't taken any tests, and calculate the average from the remaining data for both terms of 6.00x?</p><p>(output):</p><p>What was the total number of enrollments for 6.00x over both terms?</p><p>(output):</p><p>How many people were enrolled (registered) in both terms of 6.00x?</p><p>(output picture):</p><p>Part 2: A look at all courses</p><p>Let's take this one step further, let's list the number of enrollees in every course.</p><p>(output picture):</p><p>Make the returned result nicer by changing the header from COUNT(*) to enrollees.</p><p>(output picture):</p><p>Order the previous results to show the number of enrollees in descending order. Which class had the most enrollees?</p><p>(output picture):</p><p>Part 3: A deeper look at all of the courses</p><p>FIRST JOIN </p><p>Create the same list of enrollees in descending order, but include only the course long title and the counts of enrollees in the returned result. Note this will group together courses with the same name, which were taught in different terms.</p><p>(output picture):</p><p>Now we need to find out which are the courses that had at least 4,000 Enrollees? You may do this by course id.</p><p>(output picture):</p><p>Part 4: Course engagement</p><p>Now let's put together some statistics for the engagement for each course. How many people are registered, have viewed, have explored, and have become certified for each course by course_id? Rename the columns. </p><p>(output picture):</p><p>Redo the above question using course long title instead of course_id. Note this will group together courses with the same name, which were taught in different terms.</p><p>(output picture):</p><p>What fraction of the users view, explore, or certify in the content in each course once they have registered? Rename the columns. </p><p>(output picture):</p><p>Repeat this again with the long course title, noting that this will group courses with the same name across terms.</p><p>(output picture):</p><p>Part 5: Questions with Table Outputs (insert picture)</p><p>Find the list of courses that are hosted at HarvardX and have more than 4000 enrollees? </p><p>Hint/ – try two different approaches:</p><p>1. JOIN: Use the institution field in Courses, and JOIN Courses with Course_Users</p><p>2. NO JOIN: Try using LIKE with some wildcards</p><p>(output picture):</p><p>How many users who have registered more than 3 courses?</p><p>(output):</p><p>How many users are there by country? Order these alphabetically by country.</p><p>(output picture):</p><p>What is the average grade by country for users who have become certified in any course? Order by average grade, descending. </p><p>Hint: JOIN the Course_Users and Users table together, and use the Country field</p><p>(output picture):</p><p>Which country has the highest average grade for people certified in a course? Which country has the lowest average grade for people certified in a course?</p><p>(output):</p><p>Part 6: Harvard and MIT, course grades</p><p>What is the average grade by country for users who have become certified in any HARVARD course? Order by average grade, descending. </p><p>Hint: TRIPLE JOIN!</p><p>(output picture):</p><p>Which country has the highest average grade for people certified in a HARVARD course? Which country has the lowest average grade for people certified in a HARVARD course?</p><p>(output picture):</p><p>Repeat the above query for MIT.</p><p>(output picture):</p>
+</div>
+
+</div>
+</body>
+</html>

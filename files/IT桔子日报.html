@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT桔子 VIP 日报 · 一级市场每日全景</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #fff; --border: #e8e6e1;
+    --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b;
+    --accent: #2c5f8a; --accent-light: #e8f0f7; --divider: #efedeb;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 780px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 0.88em; }
+  h1 { font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 36px; }
+  h2 { font-size: 1.1em; font-weight: 600; margin: 40px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--divider); }
+  h3 { font-size: 0.98em; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+  p { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  li { font-size: 0.88em; color: var(--text-secondary); margin-bottom: 4px; }
+  .arch { background: #f5f3f0; border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin: 14px 0; overflow-x: auto; }
+  .arch pre { font-family: "SF Mono", "Cascadia Code", "Courier New", monospace; font-size: 0.78em; color: var(--text-secondary); white-space: pre; line-height: 1.4; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.86em; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--divider); }
+  th { color: var(--text-tertiary); font-weight: 600; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>IT桔子 VIP 日报</h1>
+<p class="subtitle">一级市场每日全景 · 绕反爬的 VIP 数据自动抓取 + Jarvis 风格可视化面板</p>
+
+<h2>问题</h2>
+<p>IT桔子是中国一级市场核心数据库，但 VIP 数据（完整融资记录、机构出手明细、公司深度信息）无法通过公开 API 获取。人工每天登录 IT桔子、逐页翻融资快讯、复制粘贴到 Excel，耗时 40&ndash;60 分钟，且容易漏掉关键事件。</p>
+
+<h2>技术方案</h2>
+
+<h3>Chrome CDP 保活机制</h3>
+<p>核心难点：IT桔子的反爬机制会在无头浏览器或频繁请求时触发验证码。解决方案：不创建新浏览器实例，而是连接到用户已登录的正常 Chrome 实例（CDP 端口 9222），IT桔子看到的还是"正常用户在浏览"。</p>
+
+<div class="arch"><pre>
+用户在 Chrome 中手动登录 IT桔子 VIP
+        &darr;
+Chrome 以 --remote-debugging-port=9222 启动
+        &darr;
+itjuzi_keepalive.py 维持登录态
+  &middot; 定时刷新页面防止 Session 过期
+  &middot; 检测验证码弹窗 &rarr; 暂停采集 &rarr; 通知用户手动验证
+        &darr;
+itjuzi_daily.py 通过 CDP 连接自动化抓取
+  &middot; Phase 1: 市场全景（融资/IPO/并购/独角兽/活跃机构）
+  &middot; Phase 2: VC 追踪（红杉中国/深创投/经纬/高瓴最新出手）
+  &middot; Phase 3: 公司深度（估值 $1B+ 公司团队+融资历史）
+        &darr;
+generate_pdf.py 输出结构化 PDF 日报
+</pre></div>
+
+<h3>三阶段产出</h3>
+<table>
+  <tr><th>阶段</th><th>内容</th><th>信源</th></tr>
+  <tr><td>Phase 1 · 市场全景</td><td>当日投资事件、IPO 排队、并购动态、独角兽变化、活跃机构 Top 10</td><td>IT桔子快讯 + 融资事件库</td></tr>
+  <tr><td>Phase 2 · VC 追踪</td><td>红杉中国、深创投、经纬创投、高瓴创投 最新出手 + 投资逻辑分析</td><td>机构主页 + 被投公司交叉验证</td></tr>
+  <tr><td>Phase 3 · 公司深度</td><td>估值 $1B+ 公司：团队背景、融资历史、竞品对比</td><td>公司详情页 + 工商信息</td></tr>
+</table>
+
+<h2>Jarvis 可视化面板</h2>
+<p>Iron Man 风格的 HUD 大屏：黑屏待机 &rarr; 语音唤醒动画 &rarr; 实时数据面板（融资总额 / 活跃赛道 / 机构出手热力图 / 地域分布）。使用 HTML + CSS animation + edge-tts 语音合成，用于抖音内容素材。</p>
+
+<h2>技术栈</h2>
+<table>
+  <tr><td style="color:var(--accent);font-weight:600;width:100px;">语言</td><td>Python</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">浏览器自动化</td><td>Playwright + Chrome CDP</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">保活</td><td>itjuzi_keepalive.py（维持 VIP 登录态）</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">日报生成</td><td>itjuzi_daily.py + generate_pdf.py</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">按需采集</td><td>itjuzi_scraper.py（指定公司/机构的深度抓取）</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">可视化</td><td>jarvis_dashboard.html + jarvis_live.html + edge-tts</td></tr>
+</table>
+
+</div>
+</body>
+</html>
