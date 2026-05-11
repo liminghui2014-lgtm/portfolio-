@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天纪AI — 紫微斗数智能解读</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #fff; --border: #e8e6e1;
+    --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b;
+    --accent: #2c5f8a; --divider: #efedeb;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 850px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 0.88em; }
+  h1 { font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 36px; }
+  h2 { font-size: 1.15em; font-weight: 600; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--divider); }
+  h3 { font-size: 1em; font-weight: 600; margin: 24px 0 8px; }
+  p, li { color: var(--text-secondary); font-size: 0.9em; margin-bottom: 6px; }
+  li { margin-left: 20px; }
+  .arch { background: #f5f3f0; border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 14px 0; overflow-x: auto; }
+  .arch pre { font-family: "SF Mono", "Courier New", monospace; font-size: 0.78em; color: var(--text-secondary); white-space: pre; line-height: 1.4; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.85em; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid var(--divider); }
+  th { background: #f5f3f0; color: var(--text); font-weight: 600; font-size: 0.82em; }
+  td { color: var(--text-secondary); }
+  .tag { display: inline-block; background: #f3f0ec; color: #7a6e5e; padding: 2px 10px; border-radius: 4px; font-size: 0.78em; margin-bottom: 10px; }
+  .note { color: var(--text-tertiary); font-size: 0.84em; border-left: 2px solid var(--border); padding-left: 14px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>天纪AI · 紫微斗数智能解读</h1>
+<p class="subtitle">iztro 排盘 + DeepSeek V4 + 天纪 RAG (BM25+Embedding) + Streamlit</p>
+
+<div class="tag">已上线</div>
+<div class="note">从真太阳时校正到 AI 解读的全链路紫微斗数产品。87 万字倪海夏语料 Hybrid RAG 检索。40+ 格局自动检测。暗金主题 UI。</div>
+
+<h2>系统架构</h2>
+
+<div class="arch"><pre>
+用户输入 (姓名/生辰/城市/性别)
+  │
+  ▼
+┌──────────────────────────────────┐
+│ 1. 真太阳时校正 (Python)          │
+│    北京时间 → 出生地经度 → 时辰    │
+│    时差方程(EoT) + 经度偏移       │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 2. 紫微斗数排盘 (Node.js + iztro) │
+│    完整命盘 JSON: 十二宫 + 140+   │
+│    星曜 + 四化 + 五行局           │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 3. 格局自动检测 (Python 规则引擎)  │
+│    40+ 格局: 杀破狼/紫府同宫/     │
+│    月朗天门/三奇加会...           │
+│    三方四正校验 + 吉煞判定        │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 4. Hybrid RAG 检索                │
+│    BM25 (0.6) + Embedding (0.4)  │
+│    87 万字倪海夏语料语义切块       │
+│    首次构建 3-5 分钟，后续秒加载   │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 5. DeepSeek V4 AI 解读            │
+│    命盘 JSON + 格局 + RAG →       │
+│    Temperature 0.3 · 四层解读     │
+│    本命盘→身宫→大限流年→建议      │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 6. 持久化 (SQLite)                │
+│    users/charts/readings/chats    │
+│    服务端免费次数强校验            │
+└──────────────────────────────────┘
+</pre></div>
+
+<h2>Hybrid RAG 详解</h2>
+
+<h3>训练数据</h3>
+<table>
+  <tr><th>项目</th><th>详情</th></tr>
+  <tr><td>语料来源</td><td>倪海夏《天纪》系列公开课字幕文本</td></tr>
+  <tr><td>语料规模</td><td>约 87 万字，涵盖紫微斗数全部 14 主星、12 宫位、40+ 格局的详细讲解</td></tr>
+  <tr><td>切块策略</td><td>按空行/章节边界语义切块，每块 800-2000 字，共约 500 个语义块</td></tr>
+  <tr><td>分词引擎</td><td>jieba 中文分词 + 紫微术语保护（"杀破狼""三方四正"等复合词不被拆散）</td></tr>
+</table>
+
+<h3>BM25 通道 (权重 0.6)</h3>
+<p>关键词精确匹配。统计查询词在每个语料块中出现的频率，对专有名词（星曜名、宫位名、格局名）做硬匹配。保证"命宫七杀"不会漏掉任何一段倪师原话。</p>
+
+<h3>Embedding 通道 (权重 0.4)</h3>
+<table>
+  <tr><th>项目</th><th>详情</th></tr>
+  <tr><td>模型</td><td>paraphrase-multilingual-MiniLM-L12-v2 (Sentence-Transformers)</td></tr>
+  <tr><td>向量维度</td><td>384 维</td></tr>
+  <tr><td>模型大小</td><td>约 470MB (首次下载，后续缓存)</td></tr>
+  <tr><td>编码方式</td><td>每个语料块生成 chunk 摘要（关键词 + 前 200 字）→ 编码为 384 维向量 → 存入 .rag_index/embeddings.npy</td></tr>
+  <tr><td>查询流程</td><td>用户命盘 → 提取所有星曜/宫位/四化 → 构建查询文本 → 编码查询向量 → 与 500 个语料向量做余弦相似度 → 召回语义相关块</td></tr>
+</table>
+
+<h3>混合打分</h3>
+<div class="arch"><pre>
+final_score = BM25_score × 0.6 + cosine_similarity( query_vec, chunk_vec ) × 0.4
+
+Top 20 → 按 token 预算截取 (max 6000 tokens) → 注入 prompt
+</pre></div>
+
+<h2>AI 解读设计</h2>
+
+<table>
+  <tr><th>参数</th><th>值</th><th>原因</th></tr>
+  <tr><td>模型</td><td>DeepSeek V4</td><td>中文命理术语理解最优，成本可控</td></tr>
+  <tr><td>Temperature</td><td>0.3</td><td>平衡命理推演严谨性 + 倪师语言风格</td></tr>
+  <tr><td>Max Tokens</td><td>4096</td><td>覆盖四层解读（本命+身宫+大限+建议）</td></tr>
+  <tr><td>反幻觉</td><td>System Prompt 顶层熔断</td><td>缺大限流年数据时强制声明，严禁捏造</td></tr>
+  <tr><td>证据锚定</td><td>盘上有才算数</td><td>每条判断必须引用具体星曜+宫位出处</td></tr>
+</table>
+
+<h2>核心约束</h2>
+<ul>
+  <li><strong>话不说死</strong>："倾向"而非"注定"，"容易"而非"必然"。紫微不是宿命论</li>
+  <li><strong>三层分开</strong>：本命盘（出厂设置）→ 大限（十年运势）→ 流年（当年变化）</li>
+  <li><strong>格局分寸</strong>：格局强弱取决于三方四正吉煞配合，不只报名字</li>
+  <li><strong>不恐吓</strong>：煞曜用"留意""多花时间"表达，不制造恐慌</li>
+  <li><strong>服务端校验</strong>：免费对话次数 SQLite 计数，不可客户端绕过</li>
+</ul>
+
+<h2>技术栈</h2>
+
+<table>
+  <tr><td style="color:var(--accent);font-weight:600;width:120px;">前端</td><td>Streamlit (Python)</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">排盘引擎</td><td>iztro (Node.js) + 真太阳时校正</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">AI 模型</td><td>DeepSeek V4 (Anthropic SDK)</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">RAG 检索</td><td>BM25 (rank-bm25) + Embedding (sentence-transformers/MiniLM)</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">分词</td><td>jieba + 紫微术语保护</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">格局检测</td><td>Python 规则引擎 (40+ 格局)</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">数据存储</td><td>SQLite (tianji.db) → Supabase (规划中)</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">部署</td><td>Streamlit Cloud</td></tr>
+</table>
+
+<h2>关键数据</h2>
+<ul>
+  <li>训练语料：倪海夏天纪公开课字幕 87 万字</li>
+  <li>语义块：~500 个</li>
+  <li>Embedding 模型：MiniLM-L12-v2 (470MB)</li>
+  <li>首次索引构建：3-5 分钟 (CPU)</li>
+  <li>后续加载：磁盘读取，秒级</li>
+  <li>格局检测：40+ 种，含三方四正+吉煞判定</li>
+  <li>真太阳时校正：60+ 城市经度数据库</li>
+</ul>
+
+</div>
+</body>
+</html>
