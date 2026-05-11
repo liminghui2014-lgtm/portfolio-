@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildBusiness Swarm · 四Agent产品构建流水线</title>
+<style>
+  :root { --bg: #fafaf8; --card: #fff; --border: #e8e6e1; --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b; --accent: #2c5f8a; --divider: #efedeb; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 850px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 0.88em; }
+  h1 { font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .subtitle { color: var(--text-tertiary); font-size: 0.88em; margin-bottom: 36px; }
+  h2 { font-size: 1.15em; font-weight: 600; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--divider); }
+  h3 { font-size: 1em; font-weight: 600; margin: 24px 0 8px; }
+  p, li { color: var(--text-secondary); font-size: 0.9em; margin-bottom: 6px; }
+  li { margin-left: 20px; }
+  .arch { background: #f5f3f0; border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 14px 0; overflow-x: auto; }
+  .arch pre { font-family: "SF Mono", "Courier New", monospace; font-size: 0.78em; color: var(--text-secondary); white-space: pre; line-height: 1.4; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.85em; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid var(--divider); }
+  th { background: #f5f3f0; color: var(--text); font-weight: 600; font-size: 0.82em; }
+  td { color: var(--text-secondary); }
+  .tag { display: inline-block; background: #f3f0ec; color: #7a6e5e; padding: 2px 10px; border-radius: 4px; font-size: 0.78em; margin-bottom: 10px; }
+  .note { color: var(--text-tertiary); font-size: 0.84em; border-left: 2px solid var(--border); padding-left: 14px; margin-bottom: 20px; }
+  .severity-red { color: #c0392b; font-weight:600; }
+  .severity-yellow { color: #e67e22; font-weight:600; }
+  .severity-green { color: #27ae60; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-link">&larr; 返回作品集</a>
+
+<h1>BuildBusiness Swarm · 四 Agent 产品构建流水线</h1>
+<p class="subtitle">灵感 → 商业计划 → PRD → 代码 → 审计。四名独立 Agent 协同，禁止跳步。</p>
+
+<div class="tag">Agent 架构</div>
+<div class="note">当用户想设计任何产品时主动触发。强制商业验证在前，代码开发在后。审计不通过最多打回修复 3 轮。</div>
+
+<h2>设计动机</h2>
+<p>独立开发者的最大成本不是写代码——是写了一个没人要的东西。</p>
+<p>BuildBusiness Swarm 的核心假设：<strong>在投入一行代码之前，先验证这个产品能不能卖钱。</strong>四名 Agent 各司其职、不可跳过——商业模式没想清楚之前，PM 不接手；PRD 没被确认之前，Hacker 不动键盘；最后一道关卡是商业级审计，代码必须达到"能拿出去卖钱"的标准才算通过。</p>
+
+<h2>系统架构</h2>
+
+<div class="arch"><pre>
+用户灵感 ──→ 🚫 此时严禁写代码!
+   │
+   ▼
+┌──────────────────────────────────┐
+│ 阶段 1 · Agent 01: Biz_Strategist│
+│ 商业操盘手                         │
+│                                   │
+│ 输入: 用户原始创意                  │
+│ 推演: Pain Point / Monetization / GTM │
+│ 输出: 01_Business_Plan.md         │
+│                                   │
+│ ❌ 商业模式不成立 → Pivot 或终止    │
+│ ✅ 用户确认计划 → 进入下阶段         │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 阶段 2 · Agent 02: Indie_PM       │
+│ 独立产品经理 · 极简主义             │
+│                                   │
+│ 输入: 01_Business_Plan.md         │
+│ 裁剪: 一周内可交付 / 非核心砍掉     │
+│ 输出: 02_MVP_PRD.md               │
+│  (用户流 + 数据Schema + 开发清单)   │
+│                                   │
+│ ❌ PRD超过2页 → 打回重砍           │
+│ ✅ 通过 → 进入开发                 │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 阶段 3 · Agent 03: Fullstack_Hacker│
+│ 全栈极客 · 一次一个模块             │
+│                                   │
+│ 输入: 02_MVP_PRD.md               │
+│ 技术栈: Next.js + Tailwind + Supabase│
+│ 输出: 代码文件 + 03_Delivery_Report.md│
+│                                   │
+│ ❌ 占位符代码 → 打回                 │
+│ ✅ 结构清晰 → 进入审计              │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 阶段 4 · Agent 04: Code_Auditor   │
+│ 商业级代码与体验监督员              │
+│                                   │
+│ 输入: PRD + 代码文件               │
+│ 审查: 致命缺陷 / 商业级体验 / 安全性 │
+│                                   │
+│ ✅ [READY_FOR_MONEY] → 上线!      │
+│ ❌ 04_Error_Log.md → 打回Hacker   │
+│    ↳ 最多 3 轮循环                 │
+└──────────────────────────────────┘
+</pre></div>
+
+<h2>核心设计原则</h2>
+
+<h3>1. 商业先于代码（Absolute Priority）</h3>
+<p>Biz_Strategist 没有点头之前，一行代码都不准写。这是整个 Swarm 的宪法。Product Hunt 上 90% 的失败产品，问题都不在代码质量——在于一开始就没想清楚谁付钱。</p>
+
+<h3>2. 无情裁剪（Ruthless Scope Slashing）</h3>
+<p>Indie_PM 的唯一KPI：一周内能交付。任何对"促成用户首次付费"没有直接帮助的功能——砍掉。PRD 超过两页就是过度设计。</p>
+
+<h3>3. 审计独立（Independent Audit）</h3>
+<p>Auditor 只能报问题，不能修代码。Hacker 必须亲手修复每一个 Error_Log 条目。审计三要素：致命缺陷（白屏/崩溃）、商业级体验（Loading/Hover/人话报错）、安全性（越权/注入/明文泄露）。</p>
+
+<h3>4. 打回循环（Feedback Loop）</h3>
+<p>Hacker → Auditor → 不通过 → Hacker → Auditor → ... 最多 3 轮。3 轮后仍不通过，Router 通知人类介入决策。避免无限循环消耗 Token。</p>
+
+<h2>Error_Log 强制格式</h2>
+<table>
+  <tr><th>级别</th><th>含义</th><th>示例</th></tr>
+  <tr><td class="severity-red">🔴 致命</td><td>阻塞上线：白屏、崩溃、数据丢失</td><td>API 返回 null 未处理导致页面白屏</td></tr>
+  <tr><td class="severity-yellow">🟡 体验</td><td>付费用户会投诉：无 Loading、无 Hover、报错不友好</td><td>提交按钮无 loading 态，用户可能重复点击</td></tr>
+  <tr><td class="severity-green">🟢 建议</td><td>Nice to have：安全加固、性能优化</td><td>token 存储在 localStorage，建议改用 cookie</td></tr>
+</table>
+
+<p>每条 Error_Log 包含：文件路径:行号 | 问题类型 | 问题描述 | 修复建议。</p>
+
+<h2>与 SOP Agent Swarm 的区别</h2>
+<table>
+  <tr><th>维度</th><th>SOP Agent Swarm</th><th>BuildBusiness Swarm</th></tr>
+  <tr><td>用途</td><td>产品公司深度拆解研究</td><td>从零构建商业产品</td></tr>
+  <tr><td>Agent 数量</td><td>3 (Searcher/Generator/Red Teamer/Architect)</td><td>4 (Biz/PM/Hacker/Auditor)</td></tr>
+  <tr><td>流向</td><td>串行，夹逼审计</td><td>串行，可打回循环</td></tr>
+  <tr><td>核心约束</td><td>反幻觉 + 事实锚定</td><td>商业先于代码 + 一周交付</td></tr>
+  <tr><td>输出</td><td>Markdown 深度研报</td><td>可上线代码 + 商业计划</td></tr>
+  <tr><td>触发</td><td>"SOP 拆解 {公司名}"</td><td>"BuildBusiness 构建 {产品名}"</td></tr>
+</table>
+
+<h2>技术栈（默认）</h2>
+<table>
+  <tr><td style="color:var(--accent);font-weight:600;width:100px;">前端</td><td>Next.js (React) + Tailwind CSS</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">后端</td><td>Next.js API Routes 或 Supabase Edge Functions</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">数据库</td><td>Supabase (PostgreSQL) 或 SQLite</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">部署</td><td>Vercel / Netlify</td></tr>
+  <tr><td style="color:var(--accent);font-weight:600;">触发</td><td>Claude Code 本地执行</td></tr>
+</table>
+
+<h2>触发规则</h2>
+<p>当用户表达"想做一个东西""设计产品""搭个XX工具"时，主控 Router 自动询问是否启动 Swarm。手动触发："BuildBusiness 构建 {产品名}"。</p>
+
+</div>
+</body>
+</html>
